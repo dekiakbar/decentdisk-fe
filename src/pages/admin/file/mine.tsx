@@ -208,15 +208,9 @@ const FileList: FC = function () {
                 size="sm"
                 placement="bottom"
               >
-                <Dropdown.Item>
-                  Copy Link
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  View
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  Delete
-                </Dropdown.Item>
+                <Dropdown.Item>Copy Link</Dropdown.Item>
+                <Dropdown.Item>View</Dropdown.Item>
+                <Dropdown.Item>Delete</Dropdown.Item>
               </Dropdown>
             </Table.Cell>
           </Table.Row>

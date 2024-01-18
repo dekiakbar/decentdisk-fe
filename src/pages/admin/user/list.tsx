@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import NavbarSidebarLayout from "@/components/admin/layouts/navbar-sidebar";
 import { FC, use, useEffect, useState } from "react";
 import { Alert, Button, Dropdown, Modal, Table, Toast } from "flowbite-react";
@@ -31,17 +31,22 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const UserList: FC = function () {
   const router = useRouter();
   const { query } = router;
-  const { data, error, isLoading } = useSWR('/api/admin/user/list'+ objectToQueryParam(query), fetcher)
+  const { data, error, isLoading } = useSWR(
+    "/api/admin/user/list" + objectToQueryParam(query),
+    fetcher
+  );
 
-  function handleDeleteUser(user:User){
+  function handleDeleteUser(user: User) {
     setOpenModal(true);
     setDeleteUser(user);
   }
 
-  async function handleDeleteRequest(){
+  async function handleDeleteRequest() {
     const deleteUrl = `/api/admin/user/${deleteUser.id}`;
-    const response = await fetch(deleteUrl,{method: "DELETE" }).then((res) => res.json());
-    if(response.status == 200){
+    const response = await fetch(deleteUrl, { method: "DELETE" }).then((res) =>
+      res.json()
+    );
+    if (response.status == 200) {
       setOpenToast(true);
       setOpenModal(false);
     }
@@ -51,8 +56,8 @@ const UserList: FC = function () {
   const [deleteUser, setDeleteUser] = useState(Object);
   const [openToast, setOpenToast] = useState(false);
 
-  if (error) return <div>failed to load</div>
-  if (isLoading) return <div>loading...</div>
+  if (error) return <div>failed to load</div>;
+  if (isLoading) return <div>loading...</div>;
 
   return (
     <>
@@ -93,43 +98,43 @@ const UserList: FC = function () {
           </Table.HeadCell>
         </Table.Head>
         <Table.Body className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-          {
-            data.response.data.map((user:User, index:number) =>(
-              <Table.Row key={user.id}>
-                <Table.Cell className="flex items-center p-4 mr-12 space-x-6 whitespace-nowrap">
-                  <img
-                    className="w-10 h-10 rounded-full"
-                    src={user.picture}
-                    alt="user picture"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
-                    <div className="text-base font-semibold text-gray-900 dark:text-white">
-                      {user.name}
-                    </div>
-                    <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
-                      {user.email}
-                    </div>
+          {data.response.data.map((user: User, index: number) => (
+            <Table.Row key={user.id}>
+              <Table.Cell className="flex items-center p-4 mr-12 space-x-6 whitespace-nowrap">
+                <img
+                  className="w-10 h-10 rounded-full"
+                  src={user.picture}
+                  alt="user picture"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
+                  <div className="text-base font-semibold text-gray-900 dark:text-white">
+                    {user.name}
                   </div>
-                </Table.Cell>
-                <Table.Cell className="text-base font-normal text-gray-500">
-                  {user.roles.join(' | ')}
-                </Table.Cell>
-                <Table.Cell>
-                  <Dropdown
-                    label="Action"
-                    inline={true}
-                    size="sm"
-                    placement="bottom"
-                  >
-                    <Dropdown.Item>
-                      <Button onClick={() => handleDeleteUser(user)}>Delete</Button>
-                    </Dropdown.Item>
-                  </Dropdown>
-                </Table.Cell>
-              </Table.Row>
-            ))
-          }
+                  <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
+                    {user.email}
+                  </div>
+                </div>
+              </Table.Cell>
+              <Table.Cell className="text-base font-normal text-gray-500">
+                {user.roles.join(" | ")}
+              </Table.Cell>
+              <Table.Cell>
+                <Dropdown
+                  label="Action"
+                  inline={true}
+                  size="sm"
+                  placement="bottom"
+                >
+                  <Dropdown.Item>
+                    <Button onClick={() => handleDeleteUser(user)}>
+                      Delete
+                    </Button>
+                  </Dropdown.Item>
+                </Dropdown>
+              </Table.Cell>
+            </Table.Row>
+          ))}
         </Table.Body>
       </Table>
       <div className="sticky bottom-0 right-0 items-center w-full p-4 bg-white border-t border-gray-200 sm:flex sm:justify-between dark:bg-gray-800 dark:border-gray-700">
@@ -145,7 +150,6 @@ const UserList: FC = function () {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                
                 d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
                 clipRule="evenodd"
               ></path>
@@ -162,7 +166,6 @@ const UserList: FC = function () {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                
                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                 clipRule="evenodd"
               ></path>
@@ -182,14 +185,16 @@ const UserList: FC = function () {
       </div>
       {/* modal */}
       <Modal show={openModal} onClose={() => setOpenModal(false)}>
-        <Modal.Header>The following user will be deleted, are you sure ?</Modal.Header>
+        <Modal.Header>
+          The following user will be deleted, are you sure ?
+        </Modal.Header>
         <Modal.Body>
           <div className="space-y-6">
             <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
               ID: {deleteUser?.id}
-              <br/>
+              <br />
               Name: {deleteUser?.name}
-              <br/>
+              <br />
               Email: {deleteUser?.email}
             </p>
           </div>
@@ -202,13 +207,15 @@ const UserList: FC = function () {
         </Modal.Footer>
       </Modal>
       {/* Toast (notification) */}
-      { openToast && (
+      {openToast && (
         <div className="absolute right-5 top-5">
           <Toast>
             <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-500 dark:bg-green-800 dark:text-green-200">
               <HiCheck className="h-5 w-5" />
             </div>
-            <div className="ml-3 text-sm font-normal">User deleted successfully.</div>
+            <div className="ml-3 text-sm font-normal">
+              User deleted successfully.
+            </div>
             <Toast.Toggle onDismiss={() => setOpenToast(false)} />
           </Toast>
         </div>

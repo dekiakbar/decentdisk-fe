@@ -39,7 +39,7 @@ const AdminNavbar: FC<Record<string, never>> = function () {
                   alt="Profile Picture"
                   img={image}
                   rounded={true}
-                  size='sm'
+                  size="sm"
                 />
               }
             >

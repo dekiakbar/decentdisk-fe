@@ -8,7 +8,7 @@ import {
   HiInformationCircle,
   HiUsers,
 } from "react-icons/hi";
-import { RiFileCloudFill, RiFileList3Fill,RiUser2Fill } from "react-icons/ri";
+import { RiFileCloudFill, RiFileList3Fill, RiUser2Fill } from "react-icons/ri";
 import { ImDrive } from "react-icons/im";
 import { useSidebarContext } from "@/context/SidebarContext";
 import classNames from "classnames";
