@@ -30,7 +30,7 @@ export const authOptions: AuthOptions = {
       });
 
       const body = await response.json();
-
+      console.log(body);
       if (account && response.ok) {
         const mergedUser = { ...user, ...body };
         account.access_token = body.accessToken;
