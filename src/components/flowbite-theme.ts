@@ -5,7 +5,8 @@ const flowbiteTheme: CustomFlowbiteTheme = {
     floating: {
       base: "z-10 w-fit rounded-xl divide-y divide-gray-100 shadow",
       content: "rounded-xl text-sm text-gray-700 dark:text-gray-200",
-      target: "w-fit dark:text-white",
+      target:
+        "w-fit dark:text-white text-gray-700 focus:ring-0 focus:ring-offset-0",
     },
   },
   navbar: {
