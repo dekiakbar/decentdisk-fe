@@ -6,6 +6,7 @@ import { useSidebarContext } from "@/context/SidebarContext";
 import { signOut, useSession } from "next-auth/react";
 import { RoleEnum } from "@/enum/role-enum";
 import Link from "next/link";
+
 const AdminNavbar: FC<Record<string, never>> = function () {
   const { isOpenOnSmallScreens, isPageWithSidebar, setOpenOnSmallScreens } =
     useSidebarContext();
@@ -25,7 +26,7 @@ const AdminNavbar: FC<Record<string, never>> = function () {
             <Navbar.Brand href="/">
               {/* <img alt="" src="/images/logo.svg" className="mr-3 h-6 sm:h-8" /> */}
               <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">
-                Decendisk
+                {process.env.NEXT_PUBLIC_APP_NAME}
               </span>
             </Navbar.Brand>
           </div>

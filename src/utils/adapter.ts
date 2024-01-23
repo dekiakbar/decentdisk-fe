@@ -3,7 +3,7 @@ type HttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
 interface FetchOptions {
   method: HttpMethod;
   headers?: Record<string, string>;
-  body?: Record<string, any>;
+  body?: BodyInit | null;
 }
 
 interface Response {
@@ -25,7 +25,7 @@ async function fetchAPI<T>(
       "Content-Type": "application/json",
       ...headers,
     },
-    body: body ? JSON.stringify(body) : null,
+    body: body ? body : null,
   });
 
   // if (!response.ok) {
