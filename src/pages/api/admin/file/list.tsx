@@ -33,34 +33,7 @@ export default async function getFiles(
       });
 
       res.status(response.status).json(response);
-    case "POST":
-      const uploadUrl = "/admin/file";
-      const contentType = req.headers["content-type"]
-        ? req.headers["content-type"]
-        : "multipart/form-data;";
-
-      const uploadResponse = await fetchAPI(uploadUrl, {
-        method: "POST",
-        headers: {
-          Authorization: "Bearer " + session?.access_token,
-          "Content-Type": contentType,
-        },
-        body: req.body,
-      });
-
-      res.status(uploadResponse.status).json(uploadResponse);
     default:
       MethodNotAllowedException(res);
   }
 }
-/**
- * Increase bodySize for file upload
- */
-export const config = {
-  api: {
-    // bodyParser: false,
-    bodyParser: {
-      sizeLimit: "50mb",
-    },
-  },
-};

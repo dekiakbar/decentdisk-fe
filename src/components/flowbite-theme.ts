@@ -31,6 +31,7 @@ const flowbiteTheme: CustomFlowbiteTheme = {
   table: {
     root: {
       base: "min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600",
+      wrapper: "relative overflow-x-auto",
     },
   },
 };

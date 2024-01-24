@@ -1,7 +1,6 @@
 import NavbarSidebarLayout from "@/components/admin/layouts/navbar-sidebar";
 import { FC, useState } from "react";
 import {
-  Alert,
   Button,
   Dropdown,
   FileInput,
@@ -15,7 +14,6 @@ import { Flowbite } from "flowbite-react";
 import customTheme from "@/components/flowbite-theme";
 import { objectToQueryParam } from "@/utils/builder";
 import useSWR from "swr";
-import { User } from "next-auth";
 import { File as FileType } from "@/interfaces/file";
 import { HiCheck } from "react-icons/hi";
 
@@ -64,7 +62,7 @@ const FileList: FC = function () {
       formData.append("files", file);
 
       try {
-        const result = await fetch("/api/admin/file/list", {
+        const result = await fetch("/api/admin/file/upload", {
           method: "POST",
           body: formData,
         });
@@ -75,6 +73,7 @@ const FileList: FC = function () {
           setOpenToast(true);
           mutate();
           setFile(null);
+          setInputKey(Date.now());
         }
       } catch (error) {
         setIsUploading(false);
@@ -102,13 +101,14 @@ const FileList: FC = function () {
   const [isUploading, setIsUploading] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [inputKey, setInputKey] = useState<number | null>(null);
 
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...</div>;
 
   return (
     <>
-      <div className="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5 dark:bg-gray-800 dark:border-gray-700">
+      <div className="p-4 bg-white block sm:flex items-center justify-between lg:mt-1.5 dark:bg-gray-800 dark:border-gray-700">
         <div className="w-full mb-1">
           <div className="sm:flex">
             <div className="flex items-center ml-auto space-x-2 sm:space-x-3">
@@ -117,13 +117,15 @@ const FileList: FC = function () {
               )}
               <FileInput
                 id="files"
+                name="files"
                 sizing="sm"
                 disabled={isUploading == true}
                 onChange={handleFileChange}
+                key={inputKey || ""}
               />
               {file && (
                 <Button
-                  className="text-white rounded-lg bg-primary-700 hover:bg-primary-800 sm:w-auto dark:bg-primary-600 dark:hover:bg-primary-700"
+                  className="text-white rounded-lg bg-purple-700 hover:bg-purple-800 sm:w-auto dark:bg-purple-600 dark:hover:bg-purple-700 p-0"
                   onClick={handleUpload}
                 >
                   Upload
@@ -171,12 +173,12 @@ const FileList: FC = function () {
               <Table.Cell>
                 <div className="flex items-center">
                   <input
-                    id="checkbox-{{ .id }}"
+                    id={`checkbox-${file.id}`}
                     aria-describedby="checkbox-1"
                     type="checkbox"
                     className="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
                   />
-                  <label htmlFor="checkbox-{{ .id }}" className="sr-only">
+                  <label htmlFor={`checkbox-${file.id}`} className="sr-only">
                     checkbox
                   </label>
                 </div>

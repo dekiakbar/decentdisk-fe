@@ -22,7 +22,6 @@ async function fetchAPI<T>(
   const response = await fetch(url, {
     method,
     headers: {
-      "Content-Type": "application/json",
       ...headers,
     },
     body: body ? body : null,

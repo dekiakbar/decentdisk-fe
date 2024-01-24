@@ -58,39 +58,17 @@ const AdminSidebar: FC = function () {
               >
                 User list
               </Sidebar.Item>
-              <Sidebar.Collapse
-                icon={ImDrive}
-                label="Files"
-                open={currentPage.includes("/admin/file")}
+              <Sidebar.Item
+                icon={RiFileList3Fill}
+                href="/admin/file/list"
                 className={
-                  currentPage.includes("/admin/file")
+                  "/admin/file/list" === currentPage
                     ? "bg-gray-100 dark:bg-gray-700"
                     : ""
                 }
               >
-                <Sidebar.Item
-                  icon={RiFileCloudFill}
-                  href="/admin/file/mine"
-                  className={
-                    "/admin/file/mine" === currentPage
-                      ? "bg-gray-100 dark:bg-gray-700"
-                      : ""
-                  }
-                >
-                  My Files
-                </Sidebar.Item>
-                <Sidebar.Item
-                  icon={RiFileList3Fill}
-                  href="/admin/file/list"
-                  className={
-                    "/admin/file/list" === currentPage
-                      ? "bg-gray-100 dark:bg-gray-700"
-                      : ""
-                  }
-                >
-                  File List
-                </Sidebar.Item>
-              </Sidebar.Collapse>
+                File List
+              </Sidebar.Item>
             </Sidebar.ItemGroup>
           </Sidebar.Items>
         </div>
