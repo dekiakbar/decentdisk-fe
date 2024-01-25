@@ -17,6 +17,8 @@ const flowbiteTheme: CustomFlowbiteTheme = {
   sidebar: {
     root: {
       base: "flex fixed top-0 z-20 flex-col flex-shrink-0 pt-14 h-full border-r border-gray-200 lg:flex dark:border-gray-700 transition-all duration-300 h-screen",
+      inner:
+        "h-full overflow-y-auto overflow-x-hidden bg-gray-50 py-4 px-3 dark:bg-gray-800",
     },
     collapse: {
       button:
