@@ -37,9 +37,6 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const UserList: FC = function () {
   const [currentPage, setCurrentPage] = useState(1);
-  const pathname = usePathname();
-  const router = useRouter();
-  const { query } = router;
   const { data, error, isLoading, mutate } = useSWR(
     "/api/admin/user/list" + objectToQueryParam({ page: currentPage }),
     fetcher
