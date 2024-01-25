@@ -6,13 +6,13 @@ interface FetchOptions {
   body?: BodyInit | null;
 }
 
-interface Response {
+export interface Response {
   status: number;
   statusText: string;
   response?: object | null;
 }
 
-async function fetchAPI<T>(
+async function fetchAPI(
   path: string,
   options: FetchOptions
 ): Promise<Response> {
