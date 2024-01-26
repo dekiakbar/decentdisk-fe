@@ -7,7 +7,7 @@ export type User = {
   picture: string;
   provider: string;
   providerId: string;
-  createdAt?: string;
-  updatedAt?: string;
+  createdAt: string;
+  updatedAt: string;
   roles: RoleEnum[];
 };

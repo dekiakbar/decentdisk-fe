@@ -33,7 +33,10 @@ export default function List() {
   );
 }
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+const fetcher = async (...args: Parameters<typeof fetch>) => {
+  const res = await fetch(...args);
+  return res.json();
+};
 
 const UserList: FC = function () {
   const [currentPage, setCurrentPage] = useState(1);

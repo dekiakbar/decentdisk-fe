@@ -1,6 +1,6 @@
 import NavbarSidebarLayout from "@/components/admin/layouts/navbar-sidebar";
-import { FC } from "react";
-import { Dropdown } from "flowbite-react";
+import { FC, useEffect, useState } from "react";
+import { Dropdown, Table } from "flowbite-react";
 import { Flowbite } from "flowbite-react";
 import customTheme from "@/components/flowbite-theme";
 import useSWR from "swr";
@@ -8,8 +8,13 @@ import { AdminDashboard } from "@/interfaces/admin-dashboard-data";
 import { User } from "@/interfaces/user";
 import { SwrResponse } from "@/interfaces/swr-response";
 import Link from "next/link";
+import { File } from "@/interfaces/file";
+import { convertSize } from "@/utils/size-converter";
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+const fetcher = async (...args: Parameters<typeof fetch>) => {
+  const res = await fetch(...args);
+  return res.json();
+};
 
 export default function Dashboard() {
   const { data, error, isLoading, mutate }: SwrResponse = useSWR(
@@ -24,7 +29,7 @@ export default function Dashboard() {
     return <div>failed to load</div>;
   }
 
-  const { response }: AdminDashboard = data;
+  const { response } = data;
 
   return (
     <>
@@ -38,8 +43,13 @@ export default function Dashboard() {
                 totalStorage={response.totalStorage}
               />
             </div>
-            <div className="my-4">
-              <LatestCustomers latestUsers={response.latestUsers} />
+            <div className="mt-4 grid w-full grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-3">
+              <div className="md:col-span-2 xl:col-span-2">
+                <LatestFiles latestFiles={response.latestFiles} />
+              </div>
+              <div className="col-span-1">
+                <LatestCustomers latestUsers={response.latestUsers} />
+              </div>
             </div>
           </div>
         </NavbarSidebarLayout>
@@ -47,23 +57,96 @@ export default function Dashboard() {
     </>
   );
 }
-const Datepicker: FC = function () {
+
+const Info: FC<
+  Pick<AdminDashboard, "totalUser" | "totalFile" | "totalStorage">
+> = ({ totalUser, totalFile, totalStorage }) => {
   return (
-    <span className="text-sm text-gray-600">
-      <Dropdown inline label="Last 7 days">
-        <Dropdown.Item>
-          <strong>Sep 16, 2021 - Sep 22, 2021</strong>
-        </Dropdown.Item>
-        <Dropdown.Divider />
-        <Dropdown.Item>Yesterday</Dropdown.Item>
-        <Dropdown.Item>Today</Dropdown.Item>
-        <Dropdown.Item>Last 7 days</Dropdown.Item>
-        <Dropdown.Item>Last 30 days</Dropdown.Item>
-        <Dropdown.Item>Last 90 days</Dropdown.Item>
-        <Dropdown.Divider />
-        <Dropdown.Item>Custom...</Dropdown.Item>
-      </Dropdown>
-    </span>
+    <div className="grid w-full grid-cols-1 gap-4 xl:grid-cols-2 2xl:grid-cols-3">
+      <div className="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+        <div className="w-full">
+          <h3 className="text-base font-normal text-gray-500 dark:text-gray-400">
+            Total Users
+          </h3>
+          <span className="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">
+            {totalUser}
+          </span>
+        </div>
+        <div className="w-full" id="new-products-chart"></div>
+      </div>
+      <div className="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+        <div className="w-full">
+          <h3 className="text-base font-normal text-gray-500 dark:text-gray-400">
+            Total Files
+          </h3>
+          <span className="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">
+            {totalFile}
+          </span>
+        </div>
+        <div className="w-full" id="week-signups-chart"></div>
+      </div>
+      <div className="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+        <div className="w-full">
+          <h3 className="text-base font-normal text-gray-500 dark:text-gray-400">
+            Total Storage
+          </h3>
+          <span className="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">
+            {convertSize(totalStorage)}
+          </span>
+        </div>
+        <div className="w-full" id="week-signups-chart"></div>
+      </div>
+    </div>
+  );
+};
+
+const LatestFiles: FC<Pick<AdminDashboard, "latestFiles">> = ({
+  latestFiles,
+}) => {
+  function bytesToMegabytes(bytes: number): string {
+    const megabytes = bytes / (1000 * 1000);
+    return megabytes.toFixed(2);
+  }
+  return (
+    <div className="mb-4 h-full rounded-lg bg-white p-4 shadow dark:bg-gray-800 sm:p-6">
+      <div className="mb-4 flex items-center justify-between">
+        <h3 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
+          Latest Users
+        </h3>
+        <Link
+          href="file/list"
+          className="inline-flex items-center rounded-lg p-2 text-sm font-medium text-primary-700 hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700"
+        >
+          View all
+        </Link>
+      </div>
+      <Table striped>
+        <Table.Head>
+          <Table.HeadCell>File Name</Table.HeadCell>
+          <Table.HeadCell>Size</Table.HeadCell>
+          <Table.HeadCell>type</Table.HeadCell>
+        </Table.Head>
+        <Table.Body className="divide-y">
+          {latestFiles &&
+            latestFiles.map((file: File, index) => (
+              <Table.Row
+                key={index}
+                className="bg-white dark:border-gray-700 dark:bg-gray-800"
+              >
+                <Table.Cell className="whitespace-nowrap text-gray-900 dark:text-white">
+                  {file.name}
+                </Table.Cell>
+                <Table.Cell className="whitespace-nowrap text-gray-900 dark:text-white">
+                  {convertSize(file.size)}
+                </Table.Cell>
+                <Table.Cell className="whitespace-nowrap text-gray-900 dark:text-white">
+                  {file.mimeType}
+                </Table.Cell>
+              </Table.Row>
+            ))}
+        </Table.Body>
+      </Table>
+    </div>
   );
 };
 
@@ -108,53 +191,6 @@ const LatestCustomers: FC<Pick<AdminDashboard, "latestUsers">> = ({
               </li>
             ))}
         </ul>
-      </div>
-    </div>
-  );
-};
-
-const Info: FC<
-  Pick<AdminDashboard, "totalUser" | "totalFile" | "totalStorage">
-> = ({ totalUser, totalFile, totalStorage }) => {
-  function bytesToMegabytes(bytes: number): string {
-    const megabytes = bytes / (1024 * 1024);
-    return megabytes.toFixed(2);
-  }
-
-  return (
-    <div className="grid w-full grid-cols-1 gap-4 xl:grid-cols-2 2xl:grid-cols-3">
-      <div className="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700 sm:p-6 dark:bg-gray-800">
-        <div className="w-full">
-          <h3 className="text-base font-normal text-gray-500 dark:text-gray-400">
-            Users
-          </h3>
-          <span className="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">
-            {totalUser}
-          </span>
-        </div>
-        <div className="w-full" id="new-products-chart"></div>
-      </div>
-      <div className="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700 sm:p-6 dark:bg-gray-800">
-        <div className="w-full">
-          <h3 className="text-base font-normal text-gray-500 dark:text-gray-400">
-            Files
-          </h3>
-          <span className="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">
-            {totalFile}
-          </span>
-        </div>
-        <div className="w-full" id="week-signups-chart"></div>
-      </div>
-      <div className="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700 sm:p-6 dark:bg-gray-800">
-        <div className="w-full">
-          <h3 className="text-base font-normal text-gray-500 dark:text-gray-400">
-            Storage
-          </h3>
-          <span className="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">
-            {bytesToMegabytes(totalStorage)} MB
-          </span>
-        </div>
-        <div className="w-full" id="week-signups-chart"></div>
       </div>
     </div>
   );

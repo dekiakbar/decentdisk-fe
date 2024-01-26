@@ -16,6 +16,7 @@ import { objectToQueryParam } from "@/utils/builder";
 import useSWR from "swr";
 import { File as FileType } from "@/interfaces/file";
 import { HiCheck } from "react-icons/hi";
+import { convertSize } from "@/utils/size-converter";
 
 export default function List() {
   return (
@@ -31,7 +32,10 @@ export default function List() {
   );
 }
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+const fetcher = async (...args: Parameters<typeof fetch>) => {
+  const res = await fetch(...args);
+  return res.json();
+};
 
 const FileList: FC = function () {
   const [currentPage, setCurrentPage] = useState(1);
@@ -191,7 +195,7 @@ const FileList: FC = function () {
                 <p>{file.cid}</p>
               </Table.Cell>
               <Table.Cell className="text-base font-normal text-gray-500 dark:text-gray-400 px-4">
-                {file.size}
+                {convertSize(file.size)}
               </Table.Cell>
               <Table.Cell className="text-base font-normal text-gray-500 dark:text-gray-400 px-4">
                 {file.mimeType}
