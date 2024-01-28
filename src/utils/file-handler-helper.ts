@@ -28,7 +28,7 @@ export function decodeMimeType(internalCid: string): string {
  * @returns {string}
  */
 export function isSupportedByReactPlayer(mimeType: string): boolean {
-  const SupportedType: Array<string> = [
+  const supportedType: Array<string> = [
     "video/mp4",
     "video/webm",
     "video/ogg",
@@ -36,7 +36,7 @@ export function isSupportedByReactPlayer(mimeType: string): boolean {
     "video/quicktime",
   ];
 
-  return SupportedType.includes(mimeType);
+  return supportedType.includes(mimeType);
 }
 
 /**

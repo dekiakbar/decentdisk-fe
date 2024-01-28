@@ -6,6 +6,7 @@ import {
   isSupportedByReactPlayer,
 } from "@/utils/file-handler-helper";
 import Image from "next/image";
+import Link from "next/link";
 const ReactPlayer = dynamic(() => import("react-player/lazy"), { ssr: false });
 
 interface MediaPlayerProps {
@@ -29,7 +30,7 @@ const FileHandler: FC<MediaPlayerProps> = ({ internalCid }) => {
       />
     );
   } else {
-    content = <p>File is not supported to play</p>;
+    content = <Link href={streamUrl}>Download Me</Link>;
   }
 
   return <>{content}</>;

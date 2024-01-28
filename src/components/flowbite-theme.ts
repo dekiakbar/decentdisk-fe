@@ -13,6 +13,11 @@ const flowbiteTheme: CustomFlowbiteTheme = {
     root: {
       base: "fixed z-30 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700",
     },
+    link: {
+      active: {
+        on: "block py-2 pr-4 pl-3 md:p-0 bg-cyan-700 text-black dark:text-white md:bg-transparent md:text-cyan-700",
+      },
+    },
   },
   sidebar: {
     root: {
@@ -34,6 +39,11 @@ const flowbiteTheme: CustomFlowbiteTheme = {
     root: {
       // base: "min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600",
       wrapper: "relative overflow-x-auto",
+    },
+  },
+  darkThemeToggle: {
+    root: {
+      base: "rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700",
     },
   },
 };
