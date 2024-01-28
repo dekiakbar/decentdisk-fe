@@ -17,6 +17,8 @@ import useSWR from "swr";
 import { File as FileType } from "@/interfaces/file";
 import { HiCheck } from "react-icons/hi";
 import { convertSize } from "@/utils/size-converter";
+import { redirect } from "next/navigation";
+import Link from "next/link";
 
 export default function List() {
   return (
@@ -142,19 +144,6 @@ const FileList: FC = function () {
       {/* user grid */}
       <Table>
         <Table.Head className="bg-gray-100 dark:bg-gray-700">
-          <Table.HeadCell>
-            <div className="flex items-center">
-              <input
-                id="checkbox-all"
-                aria-describedby="checkbox-1"
-                type="checkbox"
-                className="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
-              />
-              <label htmlFor="checkbox-all" className="sr-only">
-                checkbox
-              </label>
-            </div>
-          </Table.HeadCell>
           <Table.HeadCell className="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
             Name
           </Table.HeadCell>
@@ -174,19 +163,6 @@ const FileList: FC = function () {
         <Table.Body className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
           {data.response.data.map((file: FileType, index: number) => (
             <Table.Row key={file.id}>
-              <Table.Cell>
-                <div className="flex items-center">
-                  <input
-                    id={`checkbox-${file.id}`}
-                    aria-describedby="checkbox-1"
-                    type="checkbox"
-                    className="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
-                  />
-                  <label htmlFor={`checkbox-${file.id}`} className="sr-only">
-                    checkbox
-                  </label>
-                </div>
-              </Table.Cell>
               <Table.Cell className="text-base font-normal text-gray-500 dark:text-gray-400 px-4">
                 {file.name}
               </Table.Cell>
@@ -214,7 +190,9 @@ const FileList: FC = function () {
                       base: "flex items-center justify-start py-2 px-4 text-sm text-gray-700 cursor-pointer w-full dark:text-gray-200 focus:outline-none dark:hover:text-white dark:focus:text-white",
                     }}
                   >
-                    View
+                    <Link href={`/stream/${file.internalCid}`} target="_blank">
+                      View
+                    </Link>
                   </Dropdown.Item>
                   <Dropdown.Item
                     onClick={() => handleDeleteButton(file)}

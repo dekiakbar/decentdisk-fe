@@ -76,7 +76,6 @@ const UserList: FC = function () {
 
   return (
     <>
-      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
       {/* user grid */}
       <Table>
         <Table.Head className="bg-gray-100 dark:bg-gray-700">
