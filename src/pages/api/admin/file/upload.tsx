@@ -21,7 +21,7 @@ export default async function upload(
     case "POST":
       req.headers.authorization = "Bearer " + session?.access_token;
       return httpProxyMiddleware(req, res, {
-        target: process.env.API_URL,
+        target: process.env.NEXT_PUBLIC_API_URL,
         pathRewrite: [
           {
             patternStr: "api/admin/file/upload",

@@ -20,7 +20,7 @@ async function fetchAPI(
 ): Promise<Response> {
   const { method, headers, body } = options;
 
-  const url = process.env.API_URL + path;
+  const url = process.env.NEXT_PUBLIC_API_URL + path;
   const response = await fetch(url, {
     method,
     headers: {
