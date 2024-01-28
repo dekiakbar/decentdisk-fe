@@ -17,11 +17,36 @@ export function decodeMimeType(internalCid: string): string {
   return mimeType;
 }
 
+/**
+ * unsupported video:
+ * - video/x-ms-wmv
+ * - video/x-msvideo
+ * - video/3gpp
+ *
+ * @param mimeType string mimeType
+ *
+ * @returns {string}
+ */
 export function isSupportedByReactPlayer(mimeType: string): boolean {
-  const SupportedType: Array<string> = ["video/mp4", "audio/mpeg"];
+  const SupportedType: Array<string> = [
+    "video/mp4",
+    "video/webm",
+    "video/ogg",
+    "audio/ogg",
+    "video/quicktime",
+  ];
+
   return SupportedType.includes(mimeType);
 }
 
+/**
+ * unsupported image:
+ * - image/svg+xml
+ *
+ * @param mimeType string mimeType
+ *
+ * @returns {string}
+ */
 export function isImage(mimeType: string): boolean {
   const imageType: Array<string> = [
     "image/jpeg",
@@ -30,6 +55,7 @@ export function isImage(mimeType: string): boolean {
     "image/bmp",
     "image/tiff",
     "image/webp",
+    "image/vnd.microsoft.icon",
   ];
 
   return imageType.includes(mimeType);

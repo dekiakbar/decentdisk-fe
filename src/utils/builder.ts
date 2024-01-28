@@ -19,7 +19,7 @@ export function buildSearchParams(request: NextApiRequest): string {
   }
 
   if (!params.order || !isValidOrder(params.order)) {
-    params.order = "ASC";
+    params.order = "DESC";
   }
 
   return objectToQueryParam(params);
