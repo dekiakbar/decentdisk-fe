@@ -17,7 +17,6 @@ import useSWR from "swr";
 import { File as FileType } from "@/interfaces/file";
 import { HiCheck } from "react-icons/hi";
 import { convertSize } from "@/utils/size-converter";
-import { redirect } from "next/navigation";
 import Link from "next/link";
 
 export default function List() {
@@ -162,7 +161,7 @@ const FileList: FC = function () {
         </Table.Head>
         <Table.Body className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
           {data.response.data.map((file: FileType, index: number) => (
-            <Table.Row key={file.id}>
+            <Table.Row key={index}>
               <Table.Cell className="text-base font-normal text-gray-500 dark:text-gray-400 px-4">
                 {file.name}
               </Table.Cell>

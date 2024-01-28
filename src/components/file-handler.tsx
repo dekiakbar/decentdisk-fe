@@ -1,11 +1,5 @@
-import { useSession } from "next-auth/react";
-import Header from "@/components/web/header/main";
 import dynamic from "next/dynamic";
-import { useParams } from "next/navigation";
-import { useRouter } from "next/router";
-import { FC, useEffect, useState } from "react";
-import { File } from "@/interfaces/file";
-import { ParsedUrlQuery } from "querystring";
+import { FC } from "react";
 import {
   decodeMimeType,
   isImage,

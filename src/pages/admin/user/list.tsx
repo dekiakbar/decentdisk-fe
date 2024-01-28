@@ -11,8 +11,6 @@ import {
 } from "flowbite-react";
 import { Flowbite } from "flowbite-react";
 import customTheme from "@/components/flowbite-theme";
-import { usePathname } from "next/navigation";
-import { useRouter } from "next/router";
 import { objectToQueryParam } from "@/utils/builder";
 import useSWR from "swr";
 import { User } from "@/interfaces/user";
@@ -94,7 +92,7 @@ const UserList: FC = function () {
         </Table.Head>
         <Table.Body className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
           {data.response.data.map((user: User, index: number) => (
-            <Table.Row key={user.id}>
+            <Table.Row key={index}>
               <Table.Cell className="flex items-center p-4 mr-12 space-x-6 whitespace-nowrap">
                 <Image
                   className="w-10 h-10 rounded-full"

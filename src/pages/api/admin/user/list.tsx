@@ -1,11 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import type { User } from "@/interfaces/user";
 import { authOptions } from "../../auth/[...nextauth]";
 import { getServerSession } from "next-auth/next";
 import fetchAPI from "@/utils/adapter";
-import { useSearchParams } from "next/navigation";
 import { buildSearchParams } from "@/utils/builder";
-import { ReasonPhrases, StatusCodes } from "http-status-codes";
 import {
   MethodNotAllowedException,
   unAuthorizedException,

@@ -1,6 +1,6 @@
 import NavbarSidebarLayout from "@/components/admin/layouts/navbar-sidebar";
-import { FC, useEffect, useState } from "react";
-import { Dropdown, Table } from "flowbite-react";
+import { FC } from "react";
+import { Table } from "flowbite-react";
 import { Flowbite } from "flowbite-react";
 import customTheme from "@/components/flowbite-theme";
 import useSWR from "swr";
@@ -17,7 +17,7 @@ const fetcher = async (...args: Parameters<typeof fetch>) => {
 };
 
 export default function Dashboard() {
-  const { data, error, isLoading, mutate }: SwrResponse = useSWR(
+  const { data, error, isLoading }: SwrResponse = useSWR(
     "/api/admin/dashboard",
     fetcher
   );
@@ -103,10 +103,6 @@ const Info: FC<
 const LatestFiles: FC<Pick<AdminDashboard, "latestFiles">> = ({
   latestFiles,
 }) => {
-  function bytesToMegabytes(bytes: number): string {
-    const megabytes = bytes / (1000 * 1000);
-    return megabytes.toFixed(2);
-  }
   return (
     <div className="mb-4 h-full rounded-lg bg-white p-4 shadow dark:bg-gray-800 sm:p-6">
       <div className="mb-4 flex items-center justify-between">

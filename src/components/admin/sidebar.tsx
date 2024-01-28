@@ -1,15 +1,8 @@
-import { Sidebar, TextInput } from "flowbite-react";
+import { Sidebar } from "flowbite-react";
 import type { FC } from "react";
-import { useEffect, useState, PropsWithChildren } from "react";
-import {
-  HiChartPie,
-  HiClipboard,
-  HiCollection,
-  HiInformationCircle,
-  HiUsers,
-} from "react-icons/hi";
-import { RiFileCloudFill, RiFileList3Fill, RiUser2Fill } from "react-icons/ri";
-import { ImDrive } from "react-icons/im";
+import { useEffect, useState } from "react";
+import { HiChartPie } from "react-icons/hi";
+import { RiFileList3Fill, RiUser2Fill } from "react-icons/ri";
 import { useSidebarContext } from "@/context/SidebarContext";
 import classNames from "classnames";
 

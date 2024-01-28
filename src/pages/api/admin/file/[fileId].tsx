@@ -1,16 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import type { User } from "@/interfaces/user";
 import { authOptions } from "../../auth/[...nextauth]";
 import { getServerSession } from "next-auth/next";
 import fetchAPI from "@/utils/adapter";
-import { useSearchParams } from "next/navigation";
-import { buildSearchParams, isValidNumber } from "@/utils/builder";
+import { isValidNumber } from "@/utils/builder";
 import {
   BadRequestException,
   MethodNotAllowedException,
   unAuthorizedException,
 } from "@/utils/http-api-exception";
-import { isNumber } from "util";
 
 export default async function fileId(
   req: NextApiRequest,
