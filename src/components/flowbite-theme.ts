@@ -46,6 +46,11 @@ const flowbiteTheme: CustomFlowbiteTheme = {
       base: "rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700",
     },
   },
+  footer: {
+    root: {
+      base: "bg-white shadow dark:bg-gray-800 md:flex md:items-center md:justify-between w-full p-6",
+    },
+  },
 };
 
 const customTheme: ThemeProps = {

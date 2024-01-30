@@ -1,6 +1,7 @@
 import MainNavbar from "@/components/web/header/main-navbar";
 import { Flowbite } from "flowbite-react";
 import customTheme from "@/components/flowbite-theme";
+import MainFooter from "@/components/web/footer/main-footer";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
             <p className="text-4xl">Home Page</p>
           </div>
         </div>
+        <MainFooter />
       </Flowbite>
     </>
   );

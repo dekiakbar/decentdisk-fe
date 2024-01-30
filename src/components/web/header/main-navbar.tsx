@@ -32,8 +32,8 @@ const MainNavbar: FC<Record<string, never>> = function () {
         <Profile session={session} />
       </div>
       <NavbarCollapse>
-        {navigation.map((menu) => (
-          <NavbarLink href={menu.href} className="font-semibold">
+        {navigation.map((menu, index) => (
+          <NavbarLink href={menu.href} className="font-semibold" key={index}>
             {menu.name}
           </NavbarLink>
         ))}
