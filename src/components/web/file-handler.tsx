@@ -13,12 +13,26 @@ interface MediaPlayerProps {
   internalCid: string;
 }
 
+/**
+ *
+ * @param {MediaPlayerProps} internalCid
+ *
+ * @returns {FC}
+ */
 const FileHandler: FC<MediaPlayerProps> = ({ internalCid }) => {
-  const streamUrl = `${process.env.NEXT_PUBLIC_API_URL}/view/${internalCid}`;
+  const streamUrl = `/api/stream/${internalCid}`;
   const mimeType = decodeMimeType(internalCid);
   let content;
   if (isSupportedByReactPlayer(mimeType)) {
-    content = <ReactPlayer url={streamUrl} controls={true} playing={true} />;
+    content = (
+      <ReactPlayer
+        url={streamUrl}
+        controls={true}
+        playing={true}
+        width="100%"
+        height="100%"
+      />
+    );
   } else if (isImage(mimeType)) {
     content = (
       <Image
