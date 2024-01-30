@@ -91,7 +91,7 @@ const MainFooter: FC = function () {
         </div>
 
         <div className="mt-16 border-t border-gray-300 dark:border-gray-700 pt-8">
-          <p className="text-center text-xs/relaxed text-gray-700">
+          <p className="text-center text-xs/relaxed text-gray-700 dark:text-gray-100">
             &copy; {new Date().getFullYear()} {process.env.NEXT_PUBLIC_APP_NAME}
             . All rights reserved.
           </p>
