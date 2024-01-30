@@ -18,12 +18,12 @@ export function decodeMimeType(internalCid: string): string {
 }
 
 /**
- * unsupported video:
+ * Unsupported video:
  * - video/x-ms-wmv
  * - video/x-msvideo
  * - video/3gpp
  *
- * @param mimeType string mimeType
+ * @param {string} mimeType string mimeType
  *
  * @returns {string}
  */
@@ -34,16 +34,17 @@ export function isSupportedByReactPlayer(mimeType: string): boolean {
     "video/ogg",
     "audio/ogg",
     "video/quicktime",
+    "audio/mpeg",
   ];
 
   return supportedType.includes(mimeType);
 }
 
 /**
- * unsupported image:
+ * Unsupported image:
  * - image/svg+xml
  *
- * @param mimeType string mimeType
+ * @param {string} mimeType string mimeType
  *
  * @returns {string}
  */
