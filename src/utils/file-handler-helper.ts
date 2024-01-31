@@ -55,7 +55,7 @@ export function isImage(mimeType: string): boolean {
     "image/tiff",
     "image/webp",
     "image/vnd.microsoft.icon",
-    "image/svg+xml"
+    "image/svg+xml",
   ];
 
   return imageType.includes(mimeType);
