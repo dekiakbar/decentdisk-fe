@@ -62,9 +62,9 @@ const MainFooter: FC = function () {
                   <li>
                     <Link
                       className="text-gray-700 transition hover:text-purple-500 dark:hover:text-purple-500 dark:text-gray-400"
-                      href="/"
+                      href="privacy-policy"
                     >
-                      Privacy
+                      Privacy Policy
                     </Link>
                   </li>
                 </ul>
