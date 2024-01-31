@@ -8,7 +8,7 @@ export default function Stream() {
 
   /**
    * Not sure why return null on first render.
-   * 
+   *
    * @see https://github.com/vercel/next.js/discussions/11484
    * @see https://stackoverflow.com/questions/61040790/userouter-withrouter-receive-undefined-on-query-in-first-render
    */

@@ -13,6 +13,7 @@ const navigation = [
   { name: "Home", href: "/" },
   { name: "Privacy Policy", href: "/" },
   { name: "Terms of Service", href: "/" },
+  { name: "FAQs", href: "faq" },
 ];
 
 const MainNavbar: FC<Record<string, never>> = function () {

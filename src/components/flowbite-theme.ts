@@ -51,6 +51,29 @@ const flowbiteTheme: CustomFlowbiteTheme = {
       base: "bg-white shadow dark:bg-gray-800 md:flex md:items-center md:justify-between w-full p-6",
     },
   },
+  accordion: {
+    root: {
+      base: "",
+      flush: {
+        off: "rounded-lg",
+        on: "",
+      },
+    },
+    title: {
+      base: "flex w-full items-center justify-between py-5 px-5 text-left font-medium text-gray-900 bg-gray-50 dark:bg-gray-800 dark:text-white last:rounded-b-lg first:rounded-t-lg",
+      flush: {
+        off: "",
+        on: "bg-transparent dark:bg-transparent",
+      },
+      open: {
+        on: "text-gray-900 bg-gray-50 dark:bg-gray-800 dark:text-white shadow-md",
+        off: "rounded-b-lg shadow-md",
+      },
+    },
+    content: {
+      base: "py-5 px-5 last:rounded-b-lg first:rounded-t-lg bg-white dark:bg-gray-900 shadow-md",
+    },
+  },
 };
 
 const customTheme: ThemeProps = {

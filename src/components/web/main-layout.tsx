@@ -9,7 +9,9 @@ const MainLayout: FC<PropsWithChildren> = function ({ children }) {
     <>
       <Flowbite theme={customTheme}>
         <MainNavbar />
-          <div className="container mx-auto pt-16">{children}</div>
+        <div className="pt-16">
+          {children}
+        </div>
         <MainFooter />
       </Flowbite>
     </>
