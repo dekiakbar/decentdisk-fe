@@ -41,8 +41,6 @@ export function isSupportedByReactPlayer(mimeType: string): boolean {
 }
 
 /**
- * Unsupported image:
- * - image/svg+xml
  *
  * @param {string} mimeType string mimeType
  *
@@ -57,6 +55,7 @@ export function isImage(mimeType: string): boolean {
     "image/tiff",
     "image/webp",
     "image/vnd.microsoft.icon",
+    "image/svg+xml"
   ];
 
   return imageType.includes(mimeType);
