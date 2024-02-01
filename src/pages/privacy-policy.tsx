@@ -2,8 +2,7 @@ import MainLayout from "@/components/web/main-layout";
 import Link from "next/link";
 
 export default function PrivacyPolicy() {
-  const appName = process.env.NEXT_PUBLIC_APP_NAME ?? "Decendisk";
-  const url = process.env.NEXTAUTH_URL ?? "http://localhost:3000/";
+  const appName = process.env.NEXT_PUBLIC_APP_NAME ? process.env.NEXT_PUBLIC_APP_NAME : "Decendisk";
   return (
     <MainLayout>
       <div className="bg-gray-50">
@@ -11,17 +10,17 @@ export default function PrivacyPolicy() {
           <h1 className="text-3xl font-bold mb-4">Privacy Policy</h1>
           <h3 className="text-xl font-semibold mb-4">Updated at 2024-01-31</h3>
           <p className="mb-4">
-            <Link className="underline" href={url}>
+            <Link className="underline" href="/">
               {appName}
             </Link>
-            &quot;we,&quot; &quot;our,&quot; or &quot;us&quot; is committed to
+            &nbsp;&quot;we,&quot; &quot;our,&quot; or &quot;us&quot; is committed to
             protecting your privacy. This Privacy Policy explains how your
             personal information is collected, used, and disclosed by&nbsp;
-            <Link className="underline" href={url}>
+            <Link className="underline" href="/">
               {appName}
             </Link>
             . This Privacy Policy applies to our website,&nbsp;
-            <Link className="underline" href={url}>
+            <Link className="underline" href="/">
               {appName}
             </Link>
             , and its associated subdomains collectively, our
@@ -47,56 +46,56 @@ export default function PrivacyPolicy() {
             </li>
             <li>
               <span className="font-semibold">Company:</span> when this policy
-              mentions “Company,” “we,” “us,” or “our,” it refers to&nbsp;
-              <Link className="underline" href={url}>
+              mentions &quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our,&quot; it refers to&nbsp;
+              <Link className="underline" href="/">
                 {appName}
               </Link>
-              that is responsible for your information under this Privacy
+              &nbsp;that is responsible for your information under this Privacy
               Policy.
             </li>
             <li>
               <span className="font-semibold">Country:</span> where&nbsp;
-              <Link className="underline" href={url}>
+              <Link className="underline" href="/">
                 {appName}
               </Link>
-              or the owners/founders of&nbsp;
-              <Link className="underline" href={url}>
+              &nbsp;or the owners/founders of&nbsp;
+              <Link className="underline" href="/">
                 {appName}
               </Link>
-              are based, in this case is Indonesia.
+              &nbsp;are based, in this case is Indonesia.
             </li>
             <li>
               <span className="font-semibold">Customer:</span> refers to the
               company, organization or person that signs up to use the&nbsp;
-              <Link className="underline" href={url}>
+              <Link className="underline" href="/">
                 {appName}
               </Link>
-              Service to manage the relationships with your consumers or service
+              &nbsp;Service to manage the relationships with your consumers or service
               users.
             </li>
             <li>
               <span className="font-semibold">Device:</span> any internet
               connected device such as a phone, tablet, computer or any other
               device that can be used to visit&nbsp;
-              <Link className="underline" href={url}>
+              <Link className="underline" href="/">
                 {appName}
               </Link>
-              and use the services.
+              &nbsp;and use the services.
             </li>
             <li>
               <span className="font-semibold">IP address:</span> Every device
               connected to the Internet is assigned a number known as an
-              Internet protocol (IP) address. These numbers are usually assigned
+              Internet protocol address. These numbers are usually assigned
               in geographic blocks. An IP address can often be used to identify
               the location from which a device is connecting to the Internet.
             </li>
             <li>
               <span className="font-semibold">Personnel:</span> refers to those
               individuals who are employed by&nbsp;
-              <Link className="underline" href={url}>
+              <Link className="underline" href="/">
                 {appName}
               </Link>
-              or are under contract to perform a service on behalf of one of the
+              &nbsp;or are under contract to perform a service on behalf of one of the
               parties.
             </li>
             <li>
@@ -108,10 +107,10 @@ export default function PrivacyPolicy() {
             <li>
               <span className="font-semibold">Service:</span> refers to the
               service provided by&nbsp;
-              <Link className="underline" href={url}>
+              <Link className="underline" href="/">
                 {appName}
               </Link>
-              as described in the relative terms (if available) and on this
+              &nbsp;as described in the relative terms if and on this
               platform.
             </li>
             <li>
@@ -122,22 +121,18 @@ export default function PrivacyPolicy() {
             </li>
             <li>
               <span className="font-semibold">Website:</span>&nbsp;
-              <Link className="underline" href={url}>
+              <Link className="underline" href="/">
                 {appName}
               </Link>
-              ’s site, which can be accessed via this URL: &nbsp;
-              <Link className="underline" href={url}>
-                {url}
-              </Link>
-              .
+              &nbsp;&apos;s site.
             </li>
             <li>
               <span className="font-semibold">You:</span> a person or entity
               that is registered with&nbsp;
-              <Link className="underline" href={url}>
+              <Link className="underline" href="/">
                 {appName}
               </Link>
-              to use the Services.
+              &nbsp;to use the Services.
             </li>
           </ul>
 
@@ -163,18 +158,18 @@ export default function PrivacyPolicy() {
           </p>
           <ul className="list-disc list-inside mb-4 ml-4">
             <li>
-              To personalize your experience (your information helps us to
-              better respond to your individual needs)
+              To personalize your experience your information helps us to
+              better respond to your individual
             </li>
             <li>
-              To improve our service (we continually strive to improve our
+              To improve our service we continually strive to improve our
               service offerings based on the information and feedback we receive
-              from you)
+              from
             </li>
             <li>
-              To improve customer service (your information helps us to more
+              To improve customer service your information helps us to more
               effectively respond to your customer service requests and support
-              needs)
+              needs.
             </li>
             <li>To process transactions</li>
             <li>
@@ -236,7 +231,7 @@ export default function PrivacyPolicy() {
             We may also disclose personal and non-personal information about you
             to government or law enforcement officials or private parties as we,
             in our sole discretion, believe necessary or appropriate in order to
-            respond to claims, legal process (including subpoenas), to protect
+            respond to claims, legal process including, to protect
             our rights and interests or those of a third party, the safety of
             the public or any person, to prevent or stop any illegal, unethical,
             or legally actionable activity, or to otherwise comply with
@@ -319,17 +314,17 @@ export default function PrivacyPolicy() {
             internal company employment policies. Customers have the right to
             request the restriction of certain uses and disclosures of
             personally identifiable information as follows. You can contact us
-            in order to (1) update or correct your personally identifiable
-            information, (2) change your preferences with respect to
-            communications and other information you receive from us, or (3)
+            in order to update or correct your personally identifiable
+            information, change your preferences with respect to
+            communications and other information you receive from us, or
             delete the personally identifiable information maintained about you
-            on our systems (subject to the following paragraph), by cancelling
+            on our systems subject to the following, by cancelling
             your account. Such updates, corrections, changes and deletions will
             have no effect on other information that we maintain, or information
             that we have provided to third parties in accordance with this
             Privacy Policy prior to such update, correction, change or deletion.
             To protect your privacy and security, we may take reasonable steps
-            (such as requesting a unique password) to verify your identity
+            such as requesting a unique to verify your identity
             before granting you profile access or making corrections. You are
             responsible for maintaining the secrecy of your unique password and
             account information at all times. You should be aware that it is not
@@ -351,8 +346,8 @@ export default function PrivacyPolicy() {
           <p className="mb-4">
             We reserve the right to transfer information to a third party in the
             event of a sale, merger or other transfer of all or substantially
-            all of the assets of us or any of its Corporate Affiliates (as
-            defined herein), or that portion of us or any of its Corporate
+            all of the assets of us or any of its Corporate Affiliates as
+            defined, or that portion of us or any of its Corporate
             Affiliates to which the Service relates, or in the event that we
             discontinue our business or file a petition or have filed against us
             a petition in bankruptcy, reorganization or similar proceeding,
@@ -362,7 +357,7 @@ export default function PrivacyPolicy() {
 
           <h2 className="text-2xl font-bold mb-2">Affiliates</h2>
           <p className="mb-4">
-            We may disclose information (including personal information) about
+            We may disclose information including personal about
             you to our Corporate Affiliates. For purposes of this Privacy
             Policy, &quot;Corporate Affiliate&quot; means any person or entity
             which directly or indirectly controls, is controlled by or is under
@@ -394,12 +389,12 @@ export default function PrivacyPolicy() {
             of your personal information when you place an order or enter,
             submit, or access your personal information. We offer the use of a
             secure server. All supplied sensitive/credit information is
-            transmitted via Secure Socket Layer (SSL) technology and then
+            transmitted via Secure Socket Layer technology and then
             encrypted into our Payment gateway providers database only to be
             accessible by those authorized with special access rights to such
             systems, and are required to keep the information confidential.
-            After a transaction, your private information (credit cards, social
-            security numbers, financials, etc.) is never kept on file. We
+            After a transaction, your private information credit cards, social
+            security numbers, financials, etc. is never kept on file. We
             cannot, however, ensure or warrant the absolute security of any
             information you transmit to us or guarantee that your information on
             the Service may not be accessed, disclosed, altered, or destroyed by
@@ -508,7 +503,7 @@ export default function PrivacyPolicy() {
             Don&apos;t hesitate to contact us if you have any questions.
           </p>
           <ul className="list-disc list-inside mb-4 ml-4">
-            <li className="ml-2">Via Email: admin@{url}</li>
+            <li className="ml-2">Via Email: admin@someweb</li>
           </ul>
         </div>
       </div>
