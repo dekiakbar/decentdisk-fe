@@ -2,7 +2,9 @@ import MainLayout from "@/components/web/main-layout";
 import Link from "next/link";
 
 export default function PrivacyPolicy() {
-  const appName = process.env.NEXT_PUBLIC_APP_NAME ? process.env.NEXT_PUBLIC_APP_NAME : "Decendisk";
+  const appName = process.env.NEXT_PUBLIC_APP_NAME
+    ? process.env.NEXT_PUBLIC_APP_NAME
+    : "Decendisk";
   return (
     <MainLayout>
       <div className="bg-gray-50">
@@ -13,9 +15,10 @@ export default function PrivacyPolicy() {
             <Link className="underline" href="/">
               {appName}
             </Link>
-            &nbsp;&quot;we,&quot; &quot;our,&quot; or &quot;us&quot; is committed to
-            protecting your privacy. This Privacy Policy explains how your
-            personal information is collected, used, and disclosed by&nbsp;
+            &nbsp;&quot;we,&quot; &quot;our,&quot; or &quot;us&quot; is
+            committed to protecting your privacy. This Privacy Policy explains
+            how your personal information is collected, used, and disclosed
+            by&nbsp;
             <Link className="underline" href="/">
               {appName}
             </Link>
@@ -46,7 +49,8 @@ export default function PrivacyPolicy() {
             </li>
             <li>
               <span className="font-semibold">Company:</span> when this policy
-              mentions &quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our,&quot; it refers to&nbsp;
+              mentions &quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or
+              &quot;our,&quot; it refers to&nbsp;
               <Link className="underline" href="/">
                 {appName}
               </Link>
@@ -70,8 +74,8 @@ export default function PrivacyPolicy() {
               <Link className="underline" href="/">
                 {appName}
               </Link>
-              &nbsp;Service to manage the relationships with your consumers or service
-              users.
+              &nbsp;Service to manage the relationships with your consumers or
+              service users.
             </li>
             <li>
               <span className="font-semibold">Device:</span> any internet
@@ -85,9 +89,9 @@ export default function PrivacyPolicy() {
             <li>
               <span className="font-semibold">IP address:</span> Every device
               connected to the Internet is assigned a number known as an
-              Internet protocol address. These numbers are usually assigned
-              in geographic blocks. An IP address can often be used to identify
-              the location from which a device is connecting to the Internet.
+              Internet protocol address. These numbers are usually assigned in
+              geographic blocks. An IP address can often be used to identify the
+              location from which a device is connecting to the Internet.
             </li>
             <li>
               <span className="font-semibold">Personnel:</span> refers to those
@@ -95,8 +99,8 @@ export default function PrivacyPolicy() {
               <Link className="underline" href="/">
                 {appName}
               </Link>
-              &nbsp;or are under contract to perform a service on behalf of one of the
-              parties.
+              &nbsp;or are under contract to perform a service on behalf of one
+              of the parties.
             </li>
             <li>
               <span className="font-semibold">Personal Data:</span> any
@@ -110,8 +114,7 @@ export default function PrivacyPolicy() {
               <Link className="underline" href="/">
                 {appName}
               </Link>
-              &nbsp;as described in the relative terms if and on this
-              platform.
+              &nbsp;as described in the relative terms if and on this platform.
             </li>
             <li>
               <span className="font-semibold">Third-party service:</span> refers
@@ -158,8 +161,8 @@ export default function PrivacyPolicy() {
           </p>
           <ul className="list-disc list-inside mb-4 ml-4">
             <li>
-              To personalize your experience your information helps us to
-              better respond to your individual
+              To personalize your experience your information helps us to better
+              respond to your individual
             </li>
             <li>
               To improve our service we continually strive to improve our
@@ -231,11 +234,11 @@ export default function PrivacyPolicy() {
             We may also disclose personal and non-personal information about you
             to government or law enforcement officials or private parties as we,
             in our sole discretion, believe necessary or appropriate in order to
-            respond to claims, legal process including, to protect
-            our rights and interests or those of a third party, the safety of
-            the public or any person, to prevent or stop any illegal, unethical,
-            or legally actionable activity, or to otherwise comply with
-            applicable court orders, laws, rules and regulations.
+            respond to claims, legal process including, to protect our rights
+            and interests or those of a third party, the safety of the public or
+            any person, to prevent or stop any illegal, unethical, or legally
+            actionable activity, or to otherwise comply with applicable court
+            orders, laws, rules and regulations.
           </p>
 
           <h2 className="text-2xl font-bold mb-2">
@@ -315,31 +318,31 @@ export default function PrivacyPolicy() {
             request the restriction of certain uses and disclosures of
             personally identifiable information as follows. You can contact us
             in order to update or correct your personally identifiable
-            information, change your preferences with respect to
-            communications and other information you receive from us, or
-            delete the personally identifiable information maintained about you
-            on our systems subject to the following, by cancelling
-            your account. Such updates, corrections, changes and deletions will
-            have no effect on other information that we maintain, or information
-            that we have provided to third parties in accordance with this
-            Privacy Policy prior to such update, correction, change or deletion.
-            To protect your privacy and security, we may take reasonable steps
-            such as requesting a unique to verify your identity
-            before granting you profile access or making corrections. You are
-            responsible for maintaining the secrecy of your unique password and
-            account information at all times. You should be aware that it is not
-            technologically possible to remove each and every record of the
-            information you have provided to us from our system. The need to
-            back up our systems to protect information from inadvertent loss
-            means that a copy of your information may exist in a non-erasable
-            form that will be difficult or impossible for us to locate. Promptly
-            after receiving your request, all personal information stored in
-            databases we actively use, and other readily searchable media will
-            be updated, corrected, changed or deleted, as appropriate, as soon
-            as and to the extent reasonably and technically practicable. If you
-            are an end user and wish to update, delete, or receive any
-            information we have about you, you may do so by contacting the
-            organization of which you are a customer.
+            information, change your preferences with respect to communications
+            and other information you receive from us, or delete the personally
+            identifiable information maintained about you on our systems subject
+            to the following, by cancelling your account. Such updates,
+            corrections, changes and deletions will have no effect on other
+            information that we maintain, or information that we have provided
+            to third parties in accordance with this Privacy Policy prior to
+            such update, correction, change or deletion. To protect your privacy
+            and security, we may take reasonable steps such as requesting a
+            unique to verify your identity before granting you profile access or
+            making corrections. You are responsible for maintaining the secrecy
+            of your unique password and account information at all times. You
+            should be aware that it is not technologically possible to remove
+            each and every record of the information you have provided to us
+            from our system. The need to back up our systems to protect
+            information from inadvertent loss means that a copy of your
+            information may exist in a non-erasable form that will be difficult
+            or impossible for us to locate. Promptly after receiving your
+            request, all personal information stored in databases we actively
+            use, and other readily searchable media will be updated, corrected,
+            changed or deleted, as appropriate, as soon as and to the extent
+            reasonably and technically practicable. If you are an end user and
+            wish to update, delete, or receive any information we have about
+            you, you may do so by contacting the organization of which you are a
+            customer.
           </p>
 
           <h2 className="text-2xl font-bold mb-2">Sale of Business</h2>
@@ -347,24 +350,23 @@ export default function PrivacyPolicy() {
             We reserve the right to transfer information to a third party in the
             event of a sale, merger or other transfer of all or substantially
             all of the assets of us or any of its Corporate Affiliates as
-            defined, or that portion of us or any of its Corporate
-            Affiliates to which the Service relates, or in the event that we
-            discontinue our business or file a petition or have filed against us
-            a petition in bankruptcy, reorganization or similar proceeding,
-            provided that the third party agrees to adhere to the terms of this
-            Privacy Policy.
+            defined, or that portion of us or any of its Corporate Affiliates to
+            which the Service relates, or in the event that we discontinue our
+            business or file a petition or have filed against us a petition in
+            bankruptcy, reorganization or similar proceeding, provided that the
+            third party agrees to adhere to the terms of this Privacy Policy.
           </p>
 
           <h2 className="text-2xl font-bold mb-2">Affiliates</h2>
           <p className="mb-4">
-            We may disclose information including personal about
-            you to our Corporate Affiliates. For purposes of this Privacy
-            Policy, &quot;Corporate Affiliate&quot; means any person or entity
-            which directly or indirectly controls, is controlled by or is under
-            common control with us, whether by ownership or otherwise. Any
-            information relating to you that we provide to our Corporate
-            Affiliates will be treated by those Corporate Affiliates in
-            accordance with the terms of this Privacy Policy.
+            We may disclose information including personal about you to our
+            Corporate Affiliates. For purposes of this Privacy Policy,
+            &quot;Corporate Affiliate&quot; means any person or entity which
+            directly or indirectly controls, is controlled by or is under common
+            control with us, whether by ownership or otherwise. Any information
+            relating to you that we provide to our Corporate Affiliates will be
+            treated by those Corporate Affiliates in accordance with the terms
+            of this Privacy Policy.
           </p>
 
           <h2 className="text-2xl font-bold mb-2">
@@ -389,17 +391,16 @@ export default function PrivacyPolicy() {
             of your personal information when you place an order or enter,
             submit, or access your personal information. We offer the use of a
             secure server. All supplied sensitive/credit information is
-            transmitted via Secure Socket Layer technology and then
-            encrypted into our Payment gateway providers database only to be
-            accessible by those authorized with special access rights to such
-            systems, and are required to keep the information confidential.
-            After a transaction, your private information credit cards, social
-            security numbers, financials, etc. is never kept on file. We
-            cannot, however, ensure or warrant the absolute security of any
-            information you transmit to us or guarantee that your information on
-            the Service may not be accessed, disclosed, altered, or destroyed by
-            a breach of any of our physical, technical, or managerial
-            safeguards.
+            transmitted via Secure Socket Layer technology and then encrypted
+            into our Payment gateway providers database only to be accessible by
+            those authorized with special access rights to such systems, and are
+            required to keep the information confidential. After a transaction,
+            your private information credit cards, social security numbers,
+            financials, etc. is never kept on file. We cannot, however, ensure
+            or warrant the absolute security of any information you transmit to
+            us or guarantee that your information on the Service may not be
+            accessed, disclosed, altered, or destroyed by a breach of any of our
+            physical, technical, or managerial safeguards.
           </p>
 
           <h2 className="text-2xl font-bold mb-2">Governing Law</h2>
