@@ -48,18 +48,18 @@ export default function Faq() {
 
   return (
     <MainLayout>
-      <section className="relative z-20 overflow-hidden bg-white pb-12 pt-20 dark:bg-dark lg:pb-[90px] lg:pt-[120px]">
+      <section className="relative z-20 overflow-hidden bg-white pb-12 pt-20 dark:bg-dark lg:pb-[90px] lg:pt-[120px] dark:bg-gray-900">
         <div className="container mx-auto">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
               <div className="mx-auto mb-[60px] max-w-[520px] text-center lg:mb-20">
-                <span className="mb-2 block text-lg font-semibold text-primary">
+                <span className="mb-2 block text-lg font-semibold text-primary dark:text-white">
                   FAQ
                 </span>
-                <h2 className="mb-4 text-3xl font-bold text-dark sm:text-[40px]/[48px]">
+                <h2 className="mb-4 text-3xl font-bold text-dark sm:text-[40px]/[48px] dark:text-white">
                   Any Questions? Look Here
                 </h2>
-                <p className="text-base text-body-color dark:text-dark-6">
+                <p className="text-base text-body-color dark:text-dark-6 dark:text-gray-400">
                   There are many variations of passages of Lorem Ipsum available
                   but the majority have suffered alteration in some form.
                 </p>
