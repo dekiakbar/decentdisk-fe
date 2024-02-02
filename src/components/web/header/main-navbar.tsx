@@ -8,6 +8,7 @@ import {
 import { FC } from "react";
 import { useSession } from "next-auth/react";
 import Profile from "./profile";
+import Image from "next/image";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -22,8 +23,13 @@ const MainNavbar: FC<Record<string, never>> = function () {
   return (
     <Navbar fluid className="px-4 py-3">
       <Navbar.Brand href="/">
-        {/* <img alt="" src="/images/logo.svg" className="mr-3 h-6 sm:h-8" /> */}
-        <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">
+        <Image
+          src="/images/logo.svg"
+          width="40"
+          height="40"
+          alt={`${process.env.NEXT_PUBLIC_APP_NAME} logo`}
+        />
+        <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white ml-2">
           {process.env.NEXT_PUBLIC_APP_NAME}
         </span>
       </Navbar.Brand>

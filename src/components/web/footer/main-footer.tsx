@@ -11,9 +11,9 @@ const MainFooter: FC = function () {
           <div>
             <div className="flex justify-center text-teal-600 sm:justify-start">
               <Image
-                src="/images/auth.svg"
-                width="40"
-                height="40"
+                src="/images/logo.svg"
+                width="60"
+                height="60"
                 alt={process.env.NEXT_PUBLIC_APP_NAME ?? "logo"}
               />
             </div>

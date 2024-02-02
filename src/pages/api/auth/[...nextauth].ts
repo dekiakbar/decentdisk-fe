@@ -10,7 +10,7 @@ export const authOptions: AuthOptions = {
     }),
   ],
   theme: {
-    logo: "/images/auth.svg",
+    logo: "/images/logo.svg",
   },
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
