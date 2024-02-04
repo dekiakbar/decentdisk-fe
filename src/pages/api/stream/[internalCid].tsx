@@ -28,6 +28,17 @@ export default async function stream(
           },
         ],
       });
+    case "HEAD":
+      return httpProxyMiddleware(req, res, {
+        target: process.env.NEXT_PUBLIC_API_URL,
+        pathRewrite: [
+          {
+            patternStr: `api/stream/${internalCid}`,
+            replaceStr: backendStreamUrl,
+          },
+        ],
+        onProxyInit: (httpProxy) => (httpProxy.method = "HEAD"),
+      });
     default:
       MethodNotAllowedException(res);
   }

@@ -1,10 +1,6 @@
 import dynamic from "next/dynamic";
-import { FC } from "react";
-import {
-  decodeMimeType,
-  isImage,
-  isSupportedByReactPlayer,
-} from "@/utils/file-handler-helper";
+import { FC, useEffect, useState } from "react";
+import { isImage, isSupportedByReactPlayer } from "@/utils/file-handler-helper";
 import Image from "next/image";
 import Link from "next/link";
 const ReactPlayer = dynamic(() => import("react-player/lazy"), { ssr: false });
@@ -21,8 +17,25 @@ interface MediaPlayerProps {
  */
 const FileHandler: FC<MediaPlayerProps> = ({ internalCid }) => {
   const streamUrl = `/api/stream/${internalCid}`;
-  const mimeType = decodeMimeType(internalCid);
   let content;
+  const [fileMeta, setFileMeta] = useState<Record<string, string> | null>(null);
+
+  const getFileMeta = async (url: string): Promise<void> => {
+    const response = await fetch(url, { method: "HEAD" });
+    const headers = response.headers;
+    const headersObject: Record<string, string> = {};
+    headers.forEach((value, name) => {
+      headersObject[name] = value;
+    });
+    setFileMeta(headersObject);
+  };
+
+  useEffect(() => {
+    getFileMeta(streamUrl);
+  }, [streamUrl]);
+
+  const mimeType = fileMeta ? fileMeta["content-type"] : "";
+
   if (isSupportedByReactPlayer(mimeType)) {
     content = (
       <ReactPlayer

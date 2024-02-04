@@ -1,23 +1,4 @@
 /**
- * See on backend code : backend/src/file/service/file.service.ts::generateInternalCid()
- * @param internalCid
- */
-export function decodeMimeType(internalCid: string): string {
-  if (!internalCid) {
-    throw Error("internalCid can't be null or undefined");
-  }
-
-  if (!internalCid.includes("-")) {
-    throw Error("missing separator on internalCid");
-  }
-
-  const encodedMime = internalCid.split("-");
-  const mimeType = Buffer.from(encodedMime[0], "base64").toString("utf-8");
-
-  return mimeType;
-}
-
-/**
  * Unsupported video:
  * - video/x-ms-wmv
  * - video/x-msvideo
