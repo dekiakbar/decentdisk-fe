@@ -37,7 +37,6 @@ export default async function stream(
             replaceStr: backendStreamUrl,
           },
         ],
-        onProxyInit: (httpProxy) => (httpProxy.method = "HEAD"),
       });
     default:
       MethodNotAllowedException(res);
