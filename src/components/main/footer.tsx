@@ -1,47 +1,9 @@
 import { Footer } from "flowbite-react";
-import type { FC, PropsWithChildren } from "react";
-import Navbar from "../navbar";
-import Sidebar from "../sidebar";
-import { MdFacebook } from "react-icons/md";
+import { FC } from "react";
 import { FaDribbble, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
-import { SidebarProvider } from "@/context/SidebarContext";
+import { MdFacebook } from "react-icons/md";
 
-interface NavbarSidebarLayoutProps {
-  isFooter?: boolean;
-}
-
-const NavbarSidebarLayout: FC<PropsWithChildren<NavbarSidebarLayoutProps>> =
-  function ({ children, isFooter = true }) {
-    return (
-      <>
-        <SidebarProvider>
-          <Navbar />
-          <div className="flex items-start pt-16">
-            <Sidebar />
-            <MainContent isFooter={isFooter}>{children}</MainContent>
-          </div>
-        </SidebarProvider>
-      </>
-    );
-  };
-
-const MainContent: FC<PropsWithChildren<NavbarSidebarLayoutProps>> = function ({
-  children,
-  isFooter,
-}) {
-  return (
-    <main className="relative h-full w-full overflow-y-auto bg-gray-50 dark:bg-gray-900 lg:ml-64 min-h-screen">
-      {children}
-      {isFooter && (
-        <div className="mx-4 mt-4">
-          <MainContentFooter />
-        </div>
-      )}
-    </main>
-  );
-};
-
-const MainContentFooter: FC = function () {
+const MainFooter: FC = function () {
   return (
     <>
       <Footer container>
@@ -103,5 +65,4 @@ const MainContentFooter: FC = function () {
     </>
   );
 };
-
-export default NavbarSidebarLayout;
+export default MainFooter;

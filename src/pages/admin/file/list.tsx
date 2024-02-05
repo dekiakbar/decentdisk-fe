@@ -1,4 +1,3 @@
-import NavbarSidebarLayout from "@/components/admin/layouts/navbar-sidebar";
 import { FC, useState } from "react";
 import {
   Button,
@@ -18,16 +17,17 @@ import { File as FileType } from "@/interfaces/file";
 import { HiCheck } from "react-icons/hi";
 import { convertSize } from "@/utils/size-converter";
 import Link from "next/link";
+import Layout from "@/components/admin/layout";
 
 export default function List() {
   return (
     <>
       <Flowbite theme={customTheme}>
-        <NavbarSidebarLayout>
+        <Layout>
           <div className="px-4 pt-6">
             <FileList />
           </div>
-        </NavbarSidebarLayout>
+        </Layout>
       </Flowbite>
     </>
   );
@@ -113,7 +113,7 @@ const FileList: FC = function () {
 
   return (
     <>
-      <div className="p-4 bg-white block sm:flex items-center justify-between lg:mt-1.5 dark:bg-gray-800 dark:border-gray-700">
+      <div className="p-4 bg-white block sm:flex items-center justify-between lg:mt-1.5 dark:bg-gray-800 dark:border-gray-700 mb-2">
         <div className="w-full mb-1">
           <div className="sm:flex">
             <div className="flex items-center ml-auto space-x-2 sm:space-x-3">
@@ -177,13 +177,16 @@ const FileList: FC = function () {
               </Table.Cell>
               <Table.Cell className="text-base font-normal text-gray-500 px-4">
                 <Dropdown label="Action" size="sm" placement="bottom">
-                  <Dropdown.Item
+                  {/* 
+                    TODO: implement share url using internal gateway or 3rd party gateway.
+                  */}
+                  {/* <Dropdown.Item
                     theme={{
                       base: "flex items-center justify-start py-2 px-4 text-sm text-gray-700 cursor-pointer w-full dark:text-gray-200 focus:outline-none dark:hover:text-white dark:focus:text-white",
                     }}
                   >
                     Copy Link
-                  </Dropdown.Item>
+                  </Dropdown.Item> */}
                   <Dropdown.Item
                     theme={{
                       base: "flex items-center justify-start py-2 px-4 text-sm text-gray-700 cursor-pointer w-full dark:text-gray-200 focus:outline-none dark:hover:text-white dark:focus:text-white",

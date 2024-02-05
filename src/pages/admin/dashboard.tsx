@@ -1,4 +1,3 @@
-import NavbarSidebarLayout from "@/components/admin/layouts/navbar-sidebar";
 import { FC } from "react";
 import { Table } from "flowbite-react";
 import { Flowbite } from "flowbite-react";
@@ -10,6 +9,7 @@ import { SwrResponse } from "@/interfaces/swr-response";
 import Link from "next/link";
 import { File } from "@/interfaces/file";
 import { convertSize } from "@/utils/size-converter";
+import Layout from "@/components/admin/layout";
 
 const fetcher = async (...args: Parameters<typeof fetch>) => {
   const res = await fetch(...args);
@@ -34,7 +34,7 @@ export default function Dashboard() {
   return (
     <>
       <Flowbite theme={customTheme}>
-        <NavbarSidebarLayout>
+        <Layout>
           <div className="px-4 pt-4">
             <div>
               <Info
@@ -52,7 +52,7 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-        </NavbarSidebarLayout>
+        </Layout>
       </Flowbite>
     </>
   );

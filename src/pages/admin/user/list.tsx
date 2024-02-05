@@ -1,5 +1,4 @@
 "use client";
-import NavbarSidebarLayout from "@/components/admin/layouts/navbar-sidebar";
 import { FC, useState } from "react";
 import {
   Button,
@@ -16,16 +15,17 @@ import useSWR from "swr";
 import { User } from "@/interfaces/user";
 import { HiCheck } from "react-icons/hi";
 import Image from "next/image";
+import Layout from "@/components/admin/layout";
 
 export default function List() {
   return (
     <>
       <Flowbite theme={customTheme}>
-        <NavbarSidebarLayout>
+        <Layout>
           <div className="px-4 pt-6">
             <UserList />
           </div>
-        </NavbarSidebarLayout>
+        </Layout>
       </Flowbite>
     </>
   );

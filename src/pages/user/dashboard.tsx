@@ -1,4 +1,4 @@
-import MainLayout from "@/components/web/main-layout";
+import MainLayout from "@/components/user/layout";
 
 export default function Dashboard() {
   return (
