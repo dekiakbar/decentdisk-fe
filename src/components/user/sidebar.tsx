@@ -30,9 +30,9 @@ const UserSidebar: FC = function () {
             <Sidebar.ItemGroup>
               <Sidebar.Item
                 icon={RiFileList3Fill}
-                href="/file/list"
+                href="/user/file/list"
                 className={
-                  "/file/list" === currentPage
+                  "/user/file/list" === currentPage
                     ? "bg-gray-100 dark:bg-gray-700"
                     : ""
                 }
