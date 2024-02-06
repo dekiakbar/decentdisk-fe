@@ -57,18 +57,32 @@ const AdminNavbar: FC<Record<string, never>> = function () {
                 </span>
               </Dropdown.Header>
               <Dropdown.Item>
-                <Link href={"/user/dashboard"}>User Dashboard</Link>
+                <Link
+                  href={"/user/dashboard"}
+                  className="w-full text-left"
+                >
+                  User Dashboard
+                </Link>
               </Dropdown.Item>
               {isAdmin ? (
                 <Dropdown.Item>
-                  <Link href={"/admin/dashboard"}>Admin Dashboard</Link>
+                  <Link
+                    href={"/admin/dashboard"}
+                    className="w-full text-left"
+                  >
+                    Admin Dashboard
+                  </Link>
                 </Dropdown.Item>
               ) : (
                 ""
               )}
               <Dropdown.Divider />
               <Dropdown.Item>
-                <Link href="#" onClick={() => signOut({ callbackUrl: "/" })}>
+                <Link
+                  href="#"
+                  className="w-full text-left"
+                  onClick={() => signOut({ callbackUrl: "/" })}
+                >
                   Sign out
                 </Link>
               </Dropdown.Item>
