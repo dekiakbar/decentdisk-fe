@@ -97,7 +97,7 @@ export const UserList: FC = function () {
                   <Dropdown.Item
                     onClick={() => handleDeleteButton(user)}
                     theme={{
-                      base: "flex items-center justify-start py-2 px-4 text-sm text-gray-700 cursor-pointer w-full dark:text-gray-200 focus:outline-none dark:hover:text-white dark:focus:text-white",
+                      base: "flex items-center justify-start py-2 px-4 text-sm text-gray-700 cursor-pointer w-full dark:text-gray-200 focus:outline-none dark:hover:text-white dark:focus:text-white w-full text-left",
                     }}
                   >
                     Delete

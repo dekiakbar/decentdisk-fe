@@ -94,14 +94,18 @@ const FileList: FC = function () {
                       base: "flex items-center justify-start py-2 px-4 text-sm text-gray-700 cursor-pointer w-full dark:text-gray-200 focus:outline-none dark:hover:text-white dark:focus:text-white",
                     }}
                   >
-                    <Link href={`/stream/${file.internalCid}`} target="_blank">
+                    <Link
+                      href={`/stream/${file.internalCid}`}
+                      target="_blank"
+                      className="w-full text-left"
+                    >
                       View
                     </Link>
                   </Dropdown.Item>
                   <Dropdown.Item
                     onClick={() => handleDeleteButton(file)}
                     theme={{
-                      base: "flex items-center justify-start py-2 px-4 text-sm text-gray-700 cursor-pointer w-full dark:text-gray-200 focus:outline-none dark:hover:text-white dark:focus:text-white",
+                      base: "flex items-center justify-start py-2 px-4 text-sm text-gray-700 cursor-pointer w-full dark:text-gray-200 focus:outline-none dark:hover:text-white dark:focus:text-white w-full text-left",
                     }}
                   >
                     Delete
