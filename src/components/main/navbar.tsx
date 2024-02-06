@@ -57,19 +57,13 @@ const AdminNavbar: FC<Record<string, never>> = function () {
                 </span>
               </Dropdown.Header>
               <Dropdown.Item>
-                <Link
-                  href={"/user/dashboard"}
-                  className="w-full text-left"
-                >
+                <Link href={"/user/dashboard"} className="w-full text-left">
                   User Dashboard
                 </Link>
               </Dropdown.Item>
               {isAdmin ? (
                 <Dropdown.Item>
-                  <Link
-                    href={"/admin/dashboard"}
-                    className="w-full text-left"
-                  >
+                  <Link href={"/admin/dashboard"} className="w-full text-left">
                     Admin Dashboard
                   </Link>
                 </Dropdown.Item>

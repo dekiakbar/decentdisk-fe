@@ -1,5 +1,5 @@
 import { Toast } from "flowbite-react";
-import { FC, useState } from "react";
+import { FC } from "react";
 import { HiCheck } from "react-icons/hi";
 
 export interface NotificationProps {
