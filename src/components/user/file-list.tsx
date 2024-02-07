@@ -6,6 +6,8 @@ import { objectToQueryParam } from "@/utils/builder";
 import { convertSize } from "@/utils/size-converter";
 import Link from "next/link";
 import Notification from "../main/notification";
+import TableSkeleton from "../main/skeleton/table-skeleton";
+import AlertError from "../main/alert/alert-error";
 
 const FileList: FC = function () {
   const [currentPage, setCurrentPage] = useState(1);
@@ -16,6 +18,10 @@ const FileList: FC = function () {
 
   const fetcher = async (...args: Parameters<typeof fetch>) => {
     const res = await fetch(...args);
+    if (!res.ok) {
+      throw new Error(res.statusText);
+    }
+
     return res.json();
   };
 
@@ -47,8 +53,8 @@ const FileList: FC = function () {
     setOpenModal(false);
   }
 
-  if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
+  if (error) return <AlertError />;
+  if (isLoading) return <TableSkeleton />;
 
   return (
     <>

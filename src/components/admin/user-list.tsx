@@ -5,10 +5,15 @@ import Image from "next/image";
 import { FC, useState } from "react";
 import useSWR from "swr";
 import Notification from "../main/notification";
+import TableSkeleton from "../main/skeleton/table-skeleton";
+import AlertError from "../main/alert/alert-error";
 
 export const UserList: FC = function () {
   const fetcher = async (...args: Parameters<typeof fetch>) => {
     const res = await fetch(...args);
+    if (!res.ok) {
+      throw new Error(res.statusText);
+    }
     return res.json();
   };
 
@@ -44,8 +49,8 @@ export const UserList: FC = function () {
   const [deleteUser, setDeleteUser] = useState(Object);
   const [openToast, setOpenToast] = useState(false);
 
-  if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
+  if (error) return <AlertError />;
+  if (isLoading) return <TableSkeleton />;
 
   return (
     <>
