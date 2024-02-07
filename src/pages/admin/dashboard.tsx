@@ -10,6 +10,7 @@ import Link from "next/link";
 import { File } from "@/interfaces/file";
 import { convertSize } from "@/utils/size-converter";
 import Layout from "@/components/admin/layout";
+import Image from "next/image";
 
 const fetcher = async (...args: Parameters<typeof fetch>) => {
   const res = await fetch(...args);
@@ -169,10 +170,12 @@ const LatestCustomers: FC<Pick<AdminDashboard, "latestUsers">> = ({
               <li key={index} className="py-3 sm:py-4">
                 <div className="flex items-center space-x-4">
                   <div className="shrink-0">
-                    <img
+                    <Image
                       className="h-8 w-8 rounded-full"
                       src={user.picture}
                       alt="Profile picture"
+                      width="100"
+                      height="100"
                     />
                   </div>
                   <div className="min-w-0 flex-1">

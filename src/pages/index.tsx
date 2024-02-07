@@ -1,5 +1,6 @@
 import MainLayout from "@/components/web/main-layout";
 import { signIn } from "next-auth/react";
+import Image from "next/image";
 import { FaGoogle } from "react-icons/fa";
 import { HiCheckCircle } from "react-icons/hi";
 
@@ -92,17 +93,21 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-            <img
-              className="hidden w-full mb-4 rounded-lg lg:mb-0 lg:flex"
-              src="https://placehold.co/2200x1600.png"
-              alt="dashboard feature image"
+            <Image
+              className="hidden w-full mb-4 rounded-lg lg:mb-0 lg:flex shadow-xl"
+              src="/images/home/ipfs.jpeg"
+              alt="ipfs image"
+              width={585}
+              height={405}
             />
           </div>
           <div className="items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16">
-            <img
-              className="hidden w-full mb-4 rounded-lg lg:mb-0 lg:flex"
-              src="https://placehold.co/2200x1600.png"
-              alt="feature image 2"
+            <Image
+              className="hidden w-full mb-4 rounded-lg lg:mb-0 lg:flex shadow-xl"
+              src="/images/home/streaming.jpeg"
+              alt="Stream image"
+              width={585}
+              height={405}
             />
             <div className="text-gray-500 sm:text-lg dark:text-gray-400">
               <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">
