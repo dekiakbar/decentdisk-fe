@@ -29,7 +29,7 @@ function isValidOrder(value: string): value is orderType {
   return value === "ASC" || value === "DESC";
 }
 
-export function objectToQueryParam(obj: { [key: string]: any }): string {
+export function objectToQueryParam(obj: searchParams): string {
   return `?${Object.entries(obj)
     .map(
       ([key, value]) =>
