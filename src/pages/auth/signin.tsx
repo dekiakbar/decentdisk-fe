@@ -10,6 +10,7 @@ import Link from "next/link";
 import customTheme from "@/components/flowbite-theme";
 import PageTitle from "@/components/main/page-title";
 import { Flowbite } from "flowbite-react";
+import { RoleEnum } from "@/enum/role-enum";
 
 export default function SignIn({
   providers,
@@ -85,11 +86,22 @@ export default function SignIn({
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await getServerSession(context.req, context.res, authOptions);
 
-  // If the user is already logged in, redirect.
-  // Note: Make sure not to redirect to the same page
-  // To avoid an infinite loop!
   if (session) {
-    return { redirect: { destination: "/" } };
+    const isAdmin = session.roles?.includes(RoleEnum.ADMIN);
+
+    if (isAdmin) {
+      return {
+        redirect: {
+          destination: "/admin/dashboard",
+        },
+      };
+    }
+
+    return {
+      redirect: {
+        destination: "/user/dashboard",
+      },
+    };
   }
 
   const providers = await getProviders();
