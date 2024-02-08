@@ -57,7 +57,7 @@ const FileUpload: FC = function () {
 
   return (
     <>
-      <div className="p-4 bg-white block sm:flex items-center justify-between lg:mt-1.5 dark:bg-gray-800 dark:border-gray-700 mb-2">
+      <div className="p-4 bg-white block sm:flex items-center justify-between lg:mt-1.5 dark:bg-dark-light dark:border-gray-700 mb-2">
         <div className="w-full mb-1">
           <div className="sm:flex">
             <div className="flex items-center ml-auto space-x-2 sm:space-x-3">

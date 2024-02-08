@@ -34,7 +34,7 @@ const AdminSidebar: FC = function () {
                 icon={HiChartPie}
                 className={
                   "/admin/dashboard" === currentPage
-                    ? "bg-gray-100 dark:bg-gray-700"
+                    ? "bg-gray-100 dark:bg-dark-light"
                     : ""
                 }
               >
@@ -45,7 +45,7 @@ const AdminSidebar: FC = function () {
                 icon={RiUser2Fill}
                 className={
                   "/admin/user/list" === currentPage
-                    ? "bg-gray-100 dark:bg-gray-700"
+                    ? "bg-gray-100 dark:bg-dark-light"
                     : ""
                 }
               >
@@ -56,7 +56,7 @@ const AdminSidebar: FC = function () {
                 href="/admin/file/list"
                 className={
                   "/admin/file/list" === currentPage
-                    ? "bg-gray-100 dark:bg-gray-700"
+                    ? "bg-gray-100 dark:bg-dark-light"
                     : ""
                 }
               >

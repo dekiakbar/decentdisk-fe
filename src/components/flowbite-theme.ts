@@ -5,13 +5,13 @@ const flowbiteTheme: CustomFlowbiteTheme = {
     floating: {
       base: "z-10 w-fit rounded-xl divide-y divide-gray-100 shadow",
       content: "rounded-xl text-sm text-gray-700 dark:text-gray-200",
-      target:
-        "w-fit dark:text-white text-gray-700 focus:ring-0 focus:ring-offset-0",
+      target: "w-fit dark:text-white text-gray-700 focus:ring-0 focus:ring-offset-0",
     },
+    content: "rounded-xl transition-opacity duration-100 border border-gray-200 bg-white text-gray-900 dark:border-none dark:bg-dark-content dark:text-white"
   },
   navbar: {
     root: {
-      base: "fixed z-30 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700",
+      base: "fixed z-30 w-full bg-white border-b border-gray-200 dark:bg-dark-base dark:border-gray-800",
     },
     link: {
       active: {
@@ -21,9 +21,9 @@ const flowbiteTheme: CustomFlowbiteTheme = {
   },
   sidebar: {
     root: {
-      base: "flex fixed top-0 z-20 flex-col flex-shrink-0 pt-14 h-full border-r border-gray-200 lg:flex dark:border-gray-700 transition-all duration-300 h-screen",
+      base: "flex fixed top-0 z-20 flex-col flex-shrink-0 pt-14 h-full border-r border-gray-200 lg:flex dark:border-gray-800 transition-all duration-300 h-screen",
       inner:
-        "h-full overflow-y-auto overflow-x-hidden bg-gray-50 py-4 px-3 dark:bg-gray-800",
+        "h-full overflow-y-auto overflow-x-hidden bg-gray-50 py-4 px-3 dark:bg-dark-base",
     },
     collapse: {
       button:
@@ -37,9 +37,15 @@ const flowbiteTheme: CustomFlowbiteTheme = {
   },
   table: {
     root: {
-      // base: "min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600",
+      // base: "w-full text-left text-sm text-gray-500 dark:text-gray-200",
       wrapper: "relative overflow-x-auto",
     },
+    head:{
+      base: "group/head text-normal uppercase text-gray-700 dark:text-white",
+      cell:{
+        base: "group-first/head:first:rounded-tl-lg group-first/head:last:rounded-tr-lg bg-gray-50 dark:bg-gray-700 px-6 py-3"
+      }
+    }
   },
   darkThemeToggle: {
     root: {
@@ -48,7 +54,7 @@ const flowbiteTheme: CustomFlowbiteTheme = {
   },
   footer: {
     root: {
-      base: "bg-white shadow dark:bg-gray-800 md:flex md:items-center md:justify-between w-full p-6",
+      base: "bg-white shadow dark:bg-dark-base md:flex md:items-center md:justify-between w-full p-6",
     },
   },
   accordion: {

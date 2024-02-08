@@ -70,7 +70,7 @@ export const UserList: FC = function () {
             Action
           </Table.HeadCell>
         </Table.Head>
-        <Table.Body className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+        <Table.Body className="bg-white divide-y divide-gray-200 dark:bg-dark-light dark:divide-gray-700">
           {data.response.data.map((user: User, index: number) => (
             <Table.Row key={index}>
               <Table.Cell className="flex items-center p-4 mr-12 space-x-6 whitespace-nowrap">
@@ -113,7 +113,7 @@ export const UserList: FC = function () {
           ))}
         </Table.Body>
       </Table>
-      <div className="sticky bottom-0 right-0 items-center w-full p-4 bg-white border-t border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+      <div className="sticky bottom-0 right-0 items-center w-full p-4 bg-white border-t border-gray-200 dark:bg-dark-light dark:border-gray-700">
         <div className="flex overflow-x-auto sm:justify-center">
           <Pagination
             layout="pagination"

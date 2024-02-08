@@ -60,7 +60,7 @@ const FileList: FC = function () {
     <>
       {/* file grid */}
       <Table>
-        <Table.Head className="bg-gray-100 dark:bg-gray-700">
+        <Table.Head>
           <Table.HeadCell className="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
             Name
           </Table.HeadCell>
@@ -77,7 +77,7 @@ const FileList: FC = function () {
             Action
           </Table.HeadCell>
         </Table.Head>
-        <Table.Body className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+        <Table.Body className="bg-white divide-y divide-gray-200 dark:bg-dark-light dark:divide-gray-700">
           {data.response.data.map((file: FileType, index: number) => (
             <Table.Row key={index}>
               <Table.Cell className="text-base font-normal text-gray-500 dark:text-gray-400 px-4">
@@ -124,7 +124,7 @@ const FileList: FC = function () {
       </Table>
 
       {/* pagination */}
-      <div className="sticky bottom-0 right-0 items-center w-full p-4 bg-white border-t border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+      <div className="sticky bottom-0 right-0 items-center w-full p-4 bg-white border-t border-gray-200 dark:bg-dark-light dark:border-gray-700">
         <div className="flex overflow-x-auto sm:justify-center">
           <Pagination
             layout="pagination"

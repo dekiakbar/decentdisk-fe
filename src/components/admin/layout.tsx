@@ -30,7 +30,7 @@ const MainContent: FC<PropsWithChildren<NavbarSidebarLayoutProps>> = function ({
   isFooter,
 }) {
   return (
-    <main className="relative h-full w-full overflow-y-auto bg-gray-50 dark:bg-gray-900 lg:ml-64 min-h-screen">
+    <main className="relative h-full w-full overflow-y-auto bg-gray-50 dark:bg-dark-content lg:ml-64 min-h-screen">
       {children}
       {isFooter && (
         <div className="mx-4 mt-4">

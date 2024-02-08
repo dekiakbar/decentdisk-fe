@@ -61,7 +61,7 @@ const Info: FC<
 > = ({ totalUser, totalFile, totalStorage }) => {
   return (
     <div className="grid w-full grid-cols-1 gap-4 xl:grid-cols-2 2xl:grid-cols-3">
-      <div className="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+      <div className="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-900 sm:p-6 dark:bg-dark-light">
         <div className="w-full">
           <h3 className="text-base font-normal text-gray-500 dark:text-gray-400">
             Total Users
@@ -72,7 +72,7 @@ const Info: FC<
         </div>
         <div className="w-full" id="new-products-chart"></div>
       </div>
-      <div className="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+      <div className="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-900 sm:p-6 dark:bg-dark-light">
         <div className="w-full">
           <h3 className="text-base font-normal text-gray-500 dark:text-gray-400">
             Total Files
@@ -83,7 +83,7 @@ const Info: FC<
         </div>
         <div className="w-full" id="week-signups-chart"></div>
       </div>
-      <div className="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+      <div className="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-900 sm:p-6 dark:bg-dark-light">
         <div className="w-full">
           <h3 className="text-base font-normal text-gray-500 dark:text-gray-400">
             Total Storage
@@ -102,7 +102,7 @@ const LatestFiles: FC<Pick<DashboardInterface, "latestFiles">> = ({
   latestFiles,
 }) => {
   return (
-    <div className="mb-4 h-full rounded-lg bg-white p-4 shadow dark:bg-gray-800 sm:p-6">
+    <div className="mb-4 h-full rounded-lg bg-white p-4 shadow dark:bg-dark-light sm:p-6">
       <div className="mb-4 flex items-center justify-between">
         <h3 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
           Latest Users
@@ -114,7 +114,7 @@ const LatestFiles: FC<Pick<DashboardInterface, "latestFiles">> = ({
           View all
         </Link>
       </div>
-      <Table striped>
+      <Table hoverable>
         <Table.Head>
           <Table.HeadCell>File Name</Table.HeadCell>
           <Table.HeadCell>Size</Table.HeadCell>
@@ -125,7 +125,7 @@ const LatestFiles: FC<Pick<DashboardInterface, "latestFiles">> = ({
             latestFiles.map((file: File, index) => (
               <Table.Row
                 key={index}
-                className="bg-white dark:border-gray-700 dark:bg-gray-800"
+                className="bg-white dark:border-gray-900 dark:bg-dark-light"
               >
                 <Table.Cell className="whitespace-nowrap text-gray-900 dark:text-white">
                   {file.name}
@@ -148,7 +148,7 @@ const LatestCustomers: FC<Pick<DashboardInterface, "latestUsers">> = ({
   latestUsers,
 }) => {
   return (
-    <div className="mb-4 h-full rounded-lg bg-white p-4 shadow dark:bg-gray-800 sm:p-6">
+    <div className="mb-4 h-full rounded-lg bg-white p-4 shadow dark:bg-dark-light sm:p-6">
       <div className="mb-4 flex items-center justify-between">
         <h3 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
           Latest Users
