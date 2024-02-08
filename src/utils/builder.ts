@@ -38,6 +38,6 @@ export function objectToQueryParam(obj: searchParams): string {
     .join("&")}`;
 }
 
-export function isValidNumber(value: any): boolean {
+export function isValidNumber(value: number | undefined): boolean {
   return !isNaN(Number(value));
 }
