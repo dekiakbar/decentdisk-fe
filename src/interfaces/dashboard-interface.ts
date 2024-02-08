@@ -1,7 +1,7 @@
 import { File } from "./file";
 import { User } from "./user";
 
-export type AdminDashboard = {
+export type DashboardInterface = {
   totalUser: number;
   totalFile: number;
   totalStorage: number;
