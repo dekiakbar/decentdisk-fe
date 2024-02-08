@@ -9,6 +9,9 @@ export const authOptions: AuthOptions = {
       clientSecret: process.env.GOOGLE_SECRET ?? "",
     }),
   ],
+  pages: {
+    signIn: "/auth/signin",
+  },
   theme: {
     logo: "/images/logo.svg",
   },

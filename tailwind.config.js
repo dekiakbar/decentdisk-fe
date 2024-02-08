@@ -28,7 +28,11 @@ module.exports = {
       white: colors.white,
       gray: colors.gray,
       violet: colors.violet,
-      purple: colors.purple
+      purple: colors.purple,
+      dark:{
+        base:'#010409',
+        content:'#0d1117'
+      }
     },
     fontFamily: {
       sans: [
