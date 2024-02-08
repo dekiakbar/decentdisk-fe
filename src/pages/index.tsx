@@ -6,7 +6,7 @@ import { HiCheckCircle } from "react-icons/hi";
 
 export default function Home() {
   return (
-    <MainLayout>
+    <MainLayout title="Home">
       {/* hero */}
       <div className="relative overflow-hidden dark:bg-black">
         <div

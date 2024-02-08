@@ -19,7 +19,7 @@ export default function Stream() {
   const internalCidString: string = internalCid as string;
 
   return (
-    <MainLayout>
+    <MainLayout title="Stream">
       <FileHandler internalCid={internalCidString} />
     </MainLayout>
   );

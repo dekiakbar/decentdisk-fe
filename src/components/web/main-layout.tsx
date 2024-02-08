@@ -3,10 +3,16 @@ import { Flowbite } from "flowbite-react";
 import customTheme from "@/components/flowbite-theme";
 import MainFooter from "@/components/web/footer/main-footer";
 import { FC, PropsWithChildren } from "react";
+import PageTitle from "../main/page-title";
 
-const MainLayout: FC<PropsWithChildren> = function ({ children }) {
+interface MainLayoutProps extends PropsWithChildren {
+  title: string;
+}
+
+const MainLayout: FC<MainLayoutProps> = function ({ children, title }) {
   return (
     <>
+      <PageTitle title={title} />
       <Flowbite theme={customTheme}>
         <MainNavbar />
         <div className="pt-16">{children}</div>

@@ -6,7 +6,7 @@ export default function PrivacyPolicy() {
     ? process.env.NEXT_PUBLIC_APP_NAME
     : "Decendisk";
   return (
-    <MainLayout>
+    <MainLayout title="Privacy Policy">
       <div className="bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 py-8">
           <h1 className="text-3xl font-bold mb-4 dark:text-white">

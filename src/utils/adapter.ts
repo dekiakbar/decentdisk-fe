@@ -1,4 +1,4 @@
-import { AdminDashboard } from "@/interfaces/admin-dashboard-data";
+import { DashboardInterface } from "@/interfaces/dashboard-interface";
 
 type HttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
 
@@ -11,7 +11,7 @@ interface FetchOptions {
 export interface Response {
   status: number;
   statusText: string;
-  response?: null | AdminDashboard;
+  response?: null | DashboardInterface;
 }
 
 async function fetchAPI(
