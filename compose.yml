@@ -1,0 +1,25 @@
+version: '3'
+# base docker config
+services:
+  fe:
+    container_name: frontend
+    image: node:18.14.2-slim
+    env_file:
+      - ./.env.local
+    working_dir: '/app'
+    volumes:
+      - './:/app'
+    networks:
+      - decendisk
+  node:
+    container_name: frontend-node
+    image: node:18.14.2-slim
+    env_file:
+      - ./.env.local
+    working_dir: '/app'
+    volumes:
+      - './:/app'
+
+networks:
+  decendisk:
+    external: true

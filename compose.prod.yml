@@ -1,0 +1,8 @@
+version: '3'
+# docker config for development or local : ./start dev
+services:
+  fe:
+    ports:
+      - "${PORT}:${PORT}"
+    command: >      
+      bash -c "npm run build && npm run start"

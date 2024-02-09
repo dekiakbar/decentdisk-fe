@@ -1,0 +1,11 @@
+version: '3'
+# docker config for development or local : ./start dev
+services:
+  fe:
+    # build:
+    #   context: .
+    #   dockerfile: docker/Dockerfile
+    ports:
+      - "${PORT}:${PORT}"
+    command: >      
+      bash -c "npm run dev"
