@@ -700,7 +700,9 @@ export default function TermsAndConditions() {
             Don&apos;t hesitate to contact us if you have any questions.
           </p>
           <ul className="dark:text-gray-400 list-disc list-inside mb-4 ml-4">
-            <li className="ml-2">Via Email: {process.env.NEXT_PUBLIC_CONTACT_EMAIL}</li>
+            <li className="ml-2">
+              Via Email: {process.env.NEXT_PUBLIC_CONTACT_EMAIL}
+            </li>
           </ul>
         </div>
       </div>
