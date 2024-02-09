@@ -109,7 +109,7 @@ const LatestFiles: FC<Pick<DashboardInterface, "latestFiles">> = ({
         </h3>
         <Link
           href="file/list"
-          className="inline-flex items-center rounded-lg p-2 text-sm font-medium text-primary-700 hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700"
+          className="inline-flex items-center rounded-lg p-2 text-md font-medium text-purple-700 dark:text-violet-400 hover:underline"
         >
           View all
         </Link>
@@ -155,7 +155,7 @@ const LatestCustomers: FC<Pick<DashboardInterface, "latestUsers">> = ({
         </h3>
         <Link
           href="user/list"
-          className="inline-flex items-center rounded-lg p-2 text-sm font-medium text-primary-700 hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700"
+          className="inline-flex items-center rounded-lg p-2 text-md font-medium text-purple-700 dark:text-violet-400 hover:underline"
         >
           View all
         </Link>

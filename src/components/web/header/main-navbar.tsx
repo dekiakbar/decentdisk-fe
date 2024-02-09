@@ -21,7 +21,7 @@ const MainNavbar: FC<Record<string, never>> = function () {
   const { data: session } = useSession();
 
   return (
-    <Navbar fluid className="px-4 py-3">
+    <Navbar fluid className="px-4 py-3 md:px-14">
       <Navbar.Brand href="/">
         <Image
           src="/images/logo.svg"

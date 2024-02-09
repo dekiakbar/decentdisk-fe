@@ -5,9 +5,11 @@ const flowbiteTheme: CustomFlowbiteTheme = {
     floating: {
       base: "z-10 w-fit rounded-xl divide-y divide-gray-100 shadow",
       content: "rounded-xl text-sm text-gray-700 dark:text-gray-200",
-      target: "w-fit dark:text-white text-gray-700 focus:ring-0 focus:ring-offset-0",
+      target:
+        "w-fit dark:text-white text-gray-700 focus:ring-0 focus:ring-offset-0",
     },
-    content: "rounded-xl transition-opacity duration-100 border border-gray-200 bg-white text-gray-900 dark:border-none dark:bg-dark-content dark:text-white"
+    content:
+      "rounded-xl transition-opacity duration-100 border border-gray-200 bg-white text-gray-900 dark:border-none dark:bg-dark-content dark:text-white",
   },
   navbar: {
     root: {
@@ -40,12 +42,12 @@ const flowbiteTheme: CustomFlowbiteTheme = {
       // base: "w-full text-left text-sm text-gray-500 dark:text-gray-200",
       wrapper: "relative overflow-x-auto",
     },
-    head:{
+    head: {
       base: "group/head text-normal uppercase text-gray-700 dark:text-white",
-      cell:{
-        base: "group-first/head:first:rounded-tl-lg group-first/head:last:rounded-tr-lg bg-gray-50 dark:bg-gray-700 px-6 py-3"
-      }
-    }
+      cell: {
+        base: "group-first/head:first:rounded-tl-lg group-first/head:last:rounded-tr-lg bg-gray-50 dark:bg-gray-700 px-6 py-3",
+      },
+    },
   },
   darkThemeToggle: {
     root: {

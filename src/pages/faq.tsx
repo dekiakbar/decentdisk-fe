@@ -69,36 +69,6 @@ export default function Faq() {
 
           <FaqLayout data={data} />
         </div>
-
-        <div className="absolute bottom-0 right-0 z-[-1] left-0 top-0">
-          <svg
-            width="3840"
-            height="2160"
-            viewBox="0 0 3840 2160"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              opacity="0.5"
-              d="M 193.307 -273.321 L 1743 1350 L 1399 1660 C 1400 1661 731.745 983.231 478.513 729.927 C 225.976 477.317 -165.714 85.6993 -165.714 85.6993 L 193.307 -273.321 Z"
-              fill="url(#paint0_linear)"
-            />
-            <defs>
-              <linearGradient
-                id="paint0_linear"
-                x1="1308.65"
-                y1="1142.58"
-                x2="602.827"
-                y2="-418.681"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#3056D3" stopOpacity="0.26" />
-                <stop offset="1" stopColor="#9061f9" stopOpacity="0" />
-                <stop offset="1" stopColor="#9061f9" stopOpacity="0.096144" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
       </section>
     </MainLayout>
   );
