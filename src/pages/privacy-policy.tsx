@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function PrivacyPolicy() {
   const appName = process.env.NEXT_PUBLIC_APP_NAME
     ? process.env.NEXT_PUBLIC_APP_NAME
-    : "Decendisk";
+    : "decentdisk";
   return (
     <MainLayout title="Privacy Policy">
       <div className="bg-gray-50 dark:bg-gray-900">

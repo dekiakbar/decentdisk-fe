@@ -3,7 +3,7 @@
 GREEN='\033[0;32m'
 BOLD='\033[1m'
 RESET='\033[0m'
-NETWORK_NAME="decendisk"
+NETWORK_NAME="decentdisk"
 
 if [ $# -ne 1 ]; then
     echo -e "${GREEN}${BOLD}Usage: $0 <prod | dev | install | stop>${RESET}"

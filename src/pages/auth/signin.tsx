@@ -31,7 +31,7 @@ export default function SignIn({
                       className="w-14 mx-auto"
                       width={100}
                       height={100}
-                      alt="decendisk logo"
+                      alt="decentdisk logo"
                     />
                     <h2 className="mb-8 text-medium font-bold text-center dark:text-gray-100">
                       Sign in to unlock and access decentralized storage
