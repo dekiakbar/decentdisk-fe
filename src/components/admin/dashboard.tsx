@@ -169,7 +169,7 @@ const LatestCustomers: FC<Pick<DashboardInterface, "latestUsers">> = ({
                   <div className="shrink-0">
                     <Image
                       className="h-8 w-8 rounded-full"
-                      src={user.picture}
+                      src={user.picture ? user.picture : "/images/placeholder/profile.svg"}
                       alt="Profile picture"
                       width="100"
                       height="100"
