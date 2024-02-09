@@ -99,7 +99,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
     return {
       redirect: {
-        destination: "/user/dashboard",
+        destination: "/user/file/list",
       },
     };
   }
