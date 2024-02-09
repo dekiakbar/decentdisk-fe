@@ -76,7 +76,11 @@ export const UserList: FC = function () {
               <Table.Cell className="flex items-center p-4 mr-12 space-x-6 whitespace-nowrap">
                 <Image
                   className="w-10 h-10 rounded-full"
-                  src={user.picture ? user.picture : "/images/placeholder/profile.svg"}
+                  src={
+                    user.picture
+                      ? user.picture
+                      : "/images/placeholder/profile.svg"
+                  }
                   alt="profile picture"
                   loading="lazy"
                   height="24"
