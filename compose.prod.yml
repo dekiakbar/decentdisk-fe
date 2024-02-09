@@ -2,6 +2,7 @@ version: '3'
 # docker config for development or local : ./start dev
 services:
   fe:
+    restart: always
     ports:
       - "${PORT}:${PORT}"
     command: >      
