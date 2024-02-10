@@ -94,10 +94,10 @@ const FileContainer: FC<FileContainerProps> = function ({
 }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-4">
-      <div className="grid grid-cols-subgrid gap-4 col-span-3 p-5 bg-gray-100 dark:bg-gray-600">
+      <div className="grid grid-cols-subgrid gap-4 col-span-3 p-5 bg-gray-100 dark:bg-dark-content">
         {children}
       </div>
-      <div className="p-5 py-10 dark:bg-gray-800">
+      <div className="p-5 py-10 dark:bg-dark-light">
         <h5 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
           Peer Power: Streaming Magic on IPFS!
         </h5>
