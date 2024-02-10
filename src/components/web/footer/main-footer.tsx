@@ -1,9 +1,13 @@
 import { Button, Footer } from "flowbite-react";
+import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
 
 const MainFooter: FC = function () {
+  const { status } = useSession();
+  const buttonLabel = status === "authenticated" ? "Dashboard" : "Sign Up";
+
   return (
     <Footer container>
       <div className="w-full mx-auto space-y-8 pt-8 px-4 sm:px-6 lg:space-y-16 lg:px-8">
@@ -86,7 +90,9 @@ const MainFooter: FC = function () {
                 digital realm.
               </p>
             </div>
-            <Button color="purple">Sign Up</Button>
+            <Button color="purple" onClick={() => signIn()}>
+              {buttonLabel}
+            </Button>
           </div>
         </div>
 
