@@ -122,7 +122,7 @@ export const UserList: FC = function () {
           <Pagination
             layout="pagination"
             currentPage={currentPage}
-            totalPages={data.response.meta.pageCount}
+            totalPages={data.response.meta.pageCount != 0 ? data.response.meta.pageCount : 1}
             onPageChange={onPageChange}
             showIcons={true}
             previousLabel=""
