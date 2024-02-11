@@ -5,6 +5,7 @@ declare module "next-auth/jwt" {
   interface JWT {
     roles?: RoleEnum[];
     access_token?: string | null;
+    isValid: boolean;
   }
 }
 
@@ -17,7 +18,7 @@ declare module "next-auth" {
     roles?: RoleEnum[];
   }
 
-  interface Account {
+  export interface Account {
     roles?: RoleEnum[];
     access_token?: string | null;
   }
@@ -25,5 +26,6 @@ declare module "next-auth" {
   interface Session {
     roles?: RoleEnum[];
     access_token?: string | null;
+    isValid: boolean;
   }
 }
