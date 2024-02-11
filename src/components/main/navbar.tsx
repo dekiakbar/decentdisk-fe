@@ -66,7 +66,7 @@ const AdminNavbar: FC<Record<string, never>> = function () {
                 </span>
               </Dropdown.Header>
               <Dropdown.Item>
-                <Link href={"/user/dashboard"} className="w-full text-left">
+                <Link href={"/user/file/list"} className="w-full text-left">
                   User Dashboard
                 </Link>
               </Dropdown.Item>

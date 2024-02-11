@@ -33,7 +33,7 @@ export default function Profile(props: HeaderProps) {
             <span className="block truncate text-sm font-medium">{email}</span>
           </Dropdown.Header>
           <Dropdown.Item>
-            <Link href={"/user/dashboard"} className="w-full text-left">
+            <Link href={"/user/file/list"} className="w-full text-left">
               User Dashboard
             </Link>
           </Dropdown.Item>
