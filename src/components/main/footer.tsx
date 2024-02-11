@@ -18,13 +18,13 @@ const MainFooter: FC = function () {
             <Footer.Link href="/privacy-policy" className="mr-3 mb-3 lg:mb-0">
               Privacy Policy
             </Footer.Link>
-            <Footer.Link href="#" className="mr-3">
-              Cookie Policy
+            <Footer.Link href="/faq" className="mr-3">
+              FAQ
             </Footer.Link>
           </Footer.LinkGroup>
           <Footer.LinkGroup>
             <div className="flex gap-x-1">
-              <Footer.Link
+              {/* <Footer.Link
                 href="#"
                 className="hover:[&>*]:text-black dark:hover:[&>*]:text-gray-300"
               >
@@ -53,15 +53,19 @@ const MainFooter: FC = function () {
                 className="hover:[&>*]:text-black dark:hover:[&>*]:text-gray-300"
               >
                 <FaDribbble className="text-lg" />
-              </Footer.Link>
+              </Footer.Link> */}
+              <p className="text-sm text-gray-500 dark:text-gray-300">
+                &copy; {new Date().getFullYear()}{" "}
+                {process.env.NEXT_PUBLIC_APP_NAME}. All rights reserved.
+              </p>
             </div>
           </Footer.LinkGroup>
         </div>
       </Footer>
-      <p className="my-8 text-center text-sm text-gray-500 dark:text-gray-300">
+      {/* <p className="my-8 text-center text-sm text-gray-500 dark:text-gray-300">
         &copy; {new Date().getFullYear()} {process.env.NEXT_PUBLIC_APP_NAME}.
         All rights reserved.
-      </p>
+      </p> */}
     </>
   );
 };

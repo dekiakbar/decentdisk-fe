@@ -99,6 +99,7 @@ export default function Home() {
               alt="ipfs image"
               width={585}
               height={405}
+              priority={true}
             />
           </div>
           <div className="items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16">
