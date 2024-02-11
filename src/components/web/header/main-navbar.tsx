@@ -5,10 +5,11 @@ import {
   NavbarLink,
   NavbarToggle,
 } from "flowbite-react";
-import { FC } from "react";
-import { useSession } from "next-auth/react";
+import { FC, useEffect } from "react";
+import { signOut, useSession } from "next-auth/react";
 import Profile from "./profile";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -19,6 +20,14 @@ const navigation = [
 
 const MainNavbar: FC<Record<string, never>> = function () {
   const { data: session } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    // if session token not valid, logout user
+    if (session?.isValid === false) {
+      signOut();
+    }
+  }, [session?.isValid, router]);
 
   return (
     <Navbar fluid className="px-4 py-3 md:px-14">

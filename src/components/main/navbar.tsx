@@ -1,5 +1,5 @@
 import { DarkThemeToggle, Navbar } from "flowbite-react";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { Dropdown } from "flowbite-react";
 import { Avatar } from "flowbite-react";
 import { useSidebarContext } from "@/context/SidebarContext";
@@ -7,6 +7,7 @@ import { signOut, useSession } from "next-auth/react";
 import { RoleEnum } from "@/enum/role-enum";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const AdminNavbar: FC<Record<string, never>> = function () {
   const { isOpenOnSmallScreens, isPageWithSidebar, setOpenOnSmallScreens } =
@@ -18,6 +19,14 @@ const AdminNavbar: FC<Record<string, never>> = function () {
   const email = session?.user?.email;
   const name = session?.user?.name;
   const isAdmin = session?.roles?.includes(RoleEnum.ADMIN);
+
+  const router = useRouter();
+  useEffect(() => {
+    // if session token not valid, logout user
+    if (session?.isValid === false) {
+      signOut();
+    }
+  }, [session?.isValid, router]);
 
   return (
     <Navbar fluid className="px-0 py-0">

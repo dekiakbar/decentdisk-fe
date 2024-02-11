@@ -1,6 +1,7 @@
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
 import { AuthOptions } from "next-auth";
+import { validateToken } from "@/utils/validate-token";
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -18,28 +19,33 @@ export const authOptions: AuthOptions = {
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
       const url = process.env.NEXT_PUBLIC_API_URL + "/auth/signin";
-      const response = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user: user,
-          account: account,
-          profile: profile,
-          email: email,
-          credentials: credentials,
-        }),
-      });
 
-      const body = await response.json();
-      console.log(body);
-      if (account && response.ok) {
-        const mergedUser = { ...user, ...body };
-        account.access_token = body.accessToken;
-        account.roles = body.roles;
+      try {
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user: user,
+            account: account,
+            profile: profile,
+            email: email,
+            credentials: credentials,
+          }),
+        });
 
-        return mergedUser;
+        const body = await response.json();
+        console.log(body);
+        if (account && response.ok) {
+          const mergedUser = { ...user, ...body };
+          account.access_token = body.accessToken;
+          account.roles = body.roles;
+
+          return mergedUser;
+        }
+      } catch (e) {
+        console.log(e);
       }
 
       return false;
@@ -49,12 +55,13 @@ export const authOptions: AuthOptions = {
         token.access_token = account.access_token;
         token.roles = account.roles;
       }
+      token.isValid = await validateToken(token.access_token);
       return token;
     },
     async session({ session, token }) {
       session.access_token = token.access_token;
       session.roles = token.roles;
-
+      session.isValid = token.isValid;
       return session;
     },
   },
