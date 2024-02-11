@@ -1,7 +1,7 @@
 import { Footer } from "flowbite-react";
 import { FC } from "react";
-import { FaDribbble, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
-import { MdFacebook } from "react-icons/md";
+// import { FaDribbble, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
+// import { MdFacebook } from "react-icons/md";
 
 const MainFooter: FC = function () {
   return (
