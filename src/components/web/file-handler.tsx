@@ -110,13 +110,13 @@ const FileContainer: FC<FileContainerProps> = function ({
         <ul className="my-5 space-y-5">
           <li className="flex space-x-3">
             <MdOutlineFilePresent className="h-8 w-8 shrink-0 text-cyan-600 dark:text-gray-500" />
-            <span className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
+            <span className="text-base font-semibold leading-tight text-gray-500 dark:text-gray-400 m-auto">
               {fileMeta?.fileName}
             </span>
           </li>
           <li className="flex space-x-3">
             <MdOutlineSdStorage className="h-8 w-8 shrink-0 text-cyan-600 dark:text-gray-500" />
-            <span className="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">
+            <span className="text-base font-semibold leading-tight text-gray-500 dark:text-gray-400 m-auto">
               {fileMeta?.contentLength &&
                 convertSize(parseInt(fileMeta?.contentLength))}
             </span>
