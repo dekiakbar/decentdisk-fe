@@ -13,9 +13,9 @@ import { useRouter } from "next/router";
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "Privacy Policy", href: "privacy-policy" },
-  { name: "Terms And Conditions", href: "terms-and-conditions" },
-  { name: "FAQs", href: "faq" },
+  { name: "Privacy Policy", href: "/privacy-policy" },
+  { name: "Terms And Conditions", href: "/terms-and-conditions" },
+  { name: "FAQs", href: "/faq" },
 ];
 
 const MainNavbar: FC<Record<string, never>> = function () {
