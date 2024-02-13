@@ -6,7 +6,7 @@ RESET='\033[0m'
 NETWORK_NAME="decentdisk"
 
 if [ $# -ne 1 ]; then
-    echo -e "${GREEN}${BOLD}Usage: $0 <prod | dev | install | stop>${RESET}"
+    echo -e "${GREEN}${BOLD}Usage: $0 <prod | dev | install | stop | lint>${RESET}"
     exit 1
 fi
 
@@ -40,8 +40,11 @@ elif [ "$1" = "install" ]; then
 elif [ "$1" = "stop" ]; then
     echo -e "${GREEN}${BOLD}Stopping application and remove container...${RESET}"
     docker compose down
+elif [ "$1" = "lint" ]; then
+    echo -e "${GREEN}${BOLD}Starting lint code...${RESET}"
+    docker compose --env-file .env.local run --rm --build --remove-orphans node npm run lint
 else
-    echo -e "${GREEN}${BOLD}Usage: $0 <prod | dev | install | stop>${RESET}"
+    echo -e "${GREEN}${BOLD}Usage: $0 <prod | dev | install | stop | lint>${RESET}"
     exit 1
 fi
 echo -e "${GREEN}${BOLD}Done.${RESET}"
