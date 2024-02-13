@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export type File = {
   id: number;
   userId: number;
@@ -8,4 +10,5 @@ export type File = {
   mimeType: string;
   createdAt: string;
   updatedAt: string;
+  user?: User;
 };

@@ -65,6 +65,9 @@ const FileList: FC = function () {
             Name
           </Table.HeadCell>
           <Table.HeadCell className="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+            User
+          </Table.HeadCell>
+          <Table.HeadCell className="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
             CID
           </Table.HeadCell>
           <Table.HeadCell className="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
@@ -82,6 +85,19 @@ const FileList: FC = function () {
             <Table.Row key={index}>
               <Table.Cell className="text-base font-normal text-gray-500 dark:text-gray-400 px-4">
                 {file.name}
+              </Table.Cell>
+              <Table.Cell className="text-sm  font-normal text-gray-500 dark:text-gray-400 px-4">
+                {file?.user && (
+                  <>
+                    <p>{file.user?.name}</p>
+                    <p>{file.user?.email}</p>
+                  </>
+                )}
+                {!file.user && (
+                  <>
+                    <p>Guest</p>
+                  </>
+                )}
               </Table.Cell>
               <Table.Cell className="text-sm  font-normal text-gray-500 dark:text-gray-400 px-4">
                 <p>{file.internalCid}</p>
