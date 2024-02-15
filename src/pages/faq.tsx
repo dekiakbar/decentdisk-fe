@@ -60,8 +60,7 @@ export default function Faq() {
                   Any Questions? Look Here
                 </h2>
                 <p className="text-base text-body-color dark:text-dark-6 dark:text-gray-400">
-                  There are many variations of passages of Lorem Ipsum available
-                  but the majority have suffered alteration in some form.
+                  Questions? Check out our FAQ page for quick answers on accounts, and more.
                 </p>
               </div>
             </div>
