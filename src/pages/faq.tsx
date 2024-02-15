@@ -60,7 +60,8 @@ export default function Faq() {
                   Any Questions? Look Here
                 </h2>
                 <p className="text-base text-body-color dark:text-dark-6 dark:text-gray-400">
-                  Questions? Check out our FAQ page for quick answers on accounts, and more.
+                  Questions? Check out our FAQ page for quick answers on
+                  accounts, and more.
                 </p>
               </div>
             </div>
