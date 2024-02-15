@@ -2,7 +2,7 @@ import { Sidebar } from "flowbite-react";
 import type { FC } from "react";
 import { useEffect, useState } from "react";
 import { HiChartPie } from "react-icons/hi";
-import { RiFileList3Fill, RiUser2Fill } from "react-icons/ri";
+import { RiFileList3Fill, RiGlobalFill, RiUser2Fill } from "react-icons/ri";
 import { useSidebarContext } from "@/context/SidebarContext";
 import classNames from "classnames";
 
@@ -61,6 +61,17 @@ const AdminSidebar: FC = function () {
                 }
               >
                 File List
+              </Sidebar.Item>
+              <Sidebar.Item
+                icon={RiGlobalFill}
+                href="/admin/gateway/list"
+                className={
+                  "/admin/gateway/list" === currentPage
+                    ? "bg-gray-100 dark:bg-dark-light"
+                    : ""
+                }
+              >
+                Gateway List
               </Sidebar.Item>
             </Sidebar.ItemGroup>
           </Sidebar.Items>

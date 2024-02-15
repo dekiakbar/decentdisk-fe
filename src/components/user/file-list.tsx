@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { Button, Dropdown, Modal, Pagination, Table } from "flowbite-react";
+import { Button, Modal, Pagination, Table } from "flowbite-react";
 import { File as FileType } from "@/interfaces/file";
 import useSWR from "swr";
 import { objectToQueryParam } from "@/utils/builder";
@@ -8,6 +8,8 @@ import Link from "next/link";
 import Notification from "../main/notification";
 import TableSkeleton from "../main/skeleton/table-skeleton";
 import AlertError from "../main/alert/alert-error";
+import { FaFileAlt, FaTrashAlt } from "react-icons/fa";
+import ShareFile from "../main/share-file";
 
 const FileList: FC = function () {
   const [currentPage, setCurrentPage] = useState(1);
@@ -94,29 +96,30 @@ const FileList: FC = function () {
                 {file.mimeType}
               </Table.Cell>
               <Table.Cell className="text-base font-normal text-gray-500 px-4">
-                <Dropdown label="Action" size="sm" placement="bottom">
-                  <Dropdown.Item
-                    theme={{
-                      base: "flex items-center justify-start py-2 px-4 text-sm text-gray-700 cursor-pointer w-full dark:text-gray-200 focus:outline-none dark:hover:text-white dark:focus:text-white",
-                    }}
+                <div className="flex flex-wrap gap-2">
+                  <Link
+                    href={`/stream/${file.internalCid}`}
+                    target="_blank"
+                    title="Preview"
+                    className="group flex items-center justify-center px-1 py-1 text-center font-medium relative"
                   >
-                    <Link
-                      href={`/stream/${file.internalCid}`}
-                      target="_blank"
-                      className="w-full text-left"
-                    >
-                      View
-                    </Link>
-                  </Dropdown.Item>
-                  <Dropdown.Item
+                    <span className="flex items-center transition-all duration-200 rounded-md text-xs px-2 py-1">
+                      <FaFileAlt className="h-5 w-5 text-gray-500 dark:text-white" />
+                    </span>
+                  </Link>
+                  <ShareFile
+                    gateways={file?.gateways}
+                    streamPathUrl={`stream/${file.internalCid}`}
+                  />
+                  <Button
                     onClick={() => handleDeleteButton(file)}
-                    theme={{
-                      base: "flex items-center justify-start py-2 px-4 text-sm text-gray-700 cursor-pointer w-full dark:text-gray-200 focus:outline-none dark:hover:text-white dark:focus:text-white w-full text-left",
-                    }}
+                    title="Delete"
+                    size="xs"
+                    className="focus:outline-none"
                   >
-                    Delete
-                  </Dropdown.Item>
-                </Dropdown>
+                    <FaTrashAlt className="h-5 w-5 text-red-700" />
+                  </Button>
+                </div>
               </Table.Cell>
             </Table.Row>
           ))}
@@ -145,7 +148,7 @@ const FileList: FC = function () {
       {/* Delete confirmation */}
       <Modal show={openModal} onClose={() => setOpenModal(false)}>
         <Modal.Header>
-          The following user will be deleted, are you sure ?
+          The following file will be deleted, are you sure ?
         </Modal.Header>
         <Modal.Body>
           <div className="space-y-6">

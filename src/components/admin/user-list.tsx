@@ -1,12 +1,13 @@
 import { User } from "@/interfaces/user";
 import { objectToQueryParam } from "@/utils/builder";
-import { Button, Dropdown, Modal, Pagination, Table } from "flowbite-react";
+import { Button, Modal, Pagination, Table } from "flowbite-react";
 import Image from "next/image";
 import { FC, useState } from "react";
 import useSWR from "swr";
 import Notification from "../main/notification";
 import TableSkeleton from "../main/skeleton/table-skeleton";
 import AlertError from "../main/alert/alert-error";
+import { FaTrashAlt } from "react-icons/fa";
 
 export const UserList: FC = function () {
   const fetcher = async (...args: Parameters<typeof fetch>) => {
@@ -102,16 +103,16 @@ export const UserList: FC = function () {
                 {user.provider}
               </Table.Cell>
               <Table.Cell className="text-base font-normal text-gray-500 px-4">
-                <Dropdown label="Action" size="sm" placement="bottom">
-                  <Dropdown.Item
+                <div className="flex flex-wrap gap-2">
+                  <Button
                     onClick={() => handleDeleteButton(user)}
-                    theme={{
-                      base: "flex items-center justify-start py-2 px-4 text-sm text-gray-700 cursor-pointer w-full dark:text-gray-200 focus:outline-none dark:hover:text-white dark:focus:text-white w-full text-left",
-                    }}
+                    title="Delete"
+                    size="xs"
+                    className="focus:outline-none"
                   >
-                    Delete
-                  </Dropdown.Item>
-                </Dropdown>
+                    <FaTrashAlt className="h-5 w-5 text-red-700" />
+                  </Button>
+                </div>
               </Table.Cell>
             </Table.Row>
           ))}

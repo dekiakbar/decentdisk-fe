@@ -1,34 +1,31 @@
-import { FC, useState } from "react";
-import { Button, Modal, Pagination, Table } from "flowbite-react";
-import { File as FileType } from "@/interfaces/file";
-import useSWR from "swr";
 import { objectToQueryParam } from "@/utils/builder";
-import { convertSize } from "@/utils/size-converter";
-import Link from "next/link";
-import Notification from "../main/notification";
-import TableSkeleton from "../main/skeleton/table-skeleton";
-import AlertError from "../main/alert/alert-error";
-import ShareFile from "../main/share-file";
-import { FaFileAlt, FaTrashAlt } from "react-icons/fa";
-
-const FileList: FC = function () {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [openModal, setOpenModal] = useState(false);
-  const [deleteFile, setDeleteFile] = useState(Object);
-  const [openToast, setOpenToast] = useState(false);
-  const [toastMessage, setToastMessage] = useState<string | null>(null);
-
+import { Button, Modal, Pagination, Table } from "flowbite-react";
+import { FC, useContext, useState } from "react";
+import useSWR from "swr";
+import Notification from "../../main/notification";
+import TableSkeleton from "../../main/skeleton/table-skeleton";
+import AlertError from "../../main/alert/alert-error";
+import {
+  FaEdit,
+  FaRegPlayCircle,
+  FaRegStopCircle,
+  FaTrashAlt,
+} from "react-icons/fa";
+import { Gateway } from "@/interfaces/gateway";
+import { GatewayEditContext } from "./gateway-edit-provider";
+import GatewayEditModal from "./gateway-edit";
+export const GatewayList: FC = function () {
   const fetcher = async (...args: Parameters<typeof fetch>) => {
     const res = await fetch(...args);
     if (!res.ok) {
       throw new Error(res.statusText);
     }
-
     return res.json();
   };
 
+  const [currentPage, setCurrentPage] = useState(1);
   const { data, error, isLoading, mutate } = useSWR(
-    "/api/admin/file/list" + objectToQueryParam({ page: currentPage }),
+    "/api/admin/gateway/list" + objectToQueryParam({ page: currentPage }),
     fetcher
   );
 
@@ -36,99 +33,94 @@ const FileList: FC = function () {
     setCurrentPage(page);
   };
 
-  function handleDeleteButton(file: FileType) {
+  function handleDeleteButton(gateway: Gateway) {
     setOpenModal(true);
-    setDeleteFile(file);
+    setDeleteGateway(gateway);
   }
 
   async function handleDeleteRequest() {
-    const deleteUrl = `/api/admin/file/${deleteFile.id}`;
+    const deleteUrl = `/api/admin/gateway/${deleteGateway.id}`;
     const response = await fetch(deleteUrl, { method: "DELETE" }).then((res) =>
       res.json()
     );
 
     if (response.status == 200) {
-      setToastMessage("File deleted successfully.");
       setOpenToast(true);
       mutate();
     }
     setOpenModal(false);
   }
 
+  const [openModal, setOpenModal] = useState(false);
+  const [deleteGateway, setDeleteGateway] = useState(Object);
+  const [openToast, setOpenToast] = useState(false);
+  const { setIsModalOpen, setGatewayEdit } = useContext(GatewayEditContext);
+
   if (error) return <AlertError />;
   if (isLoading) return <TableSkeleton />;
 
   return (
     <>
-      {/* file grid */}
+      {/* <GatewayEditProvider> */}
+      {/* gateway grid */}
       <Table>
         <Table.Head className="bg-gray-100 dark:bg-gray-700">
           <Table.HeadCell className="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-            Name
+            Gateway
           </Table.HeadCell>
           <Table.HeadCell className="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-            User
+            Status
           </Table.HeadCell>
           <Table.HeadCell className="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-            CID
+            Latency
           </Table.HeadCell>
           <Table.HeadCell className="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-            Size
+            Is Enabled
           </Table.HeadCell>
           <Table.HeadCell className="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-            Type
+            Updated At
           </Table.HeadCell>
-          <Table.HeadCell className="p-4 text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
+          <Table.HeadCell className="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
             Action
           </Table.HeadCell>
         </Table.Head>
         <Table.Body className="bg-white divide-y divide-gray-200 dark:bg-dark-light dark:divide-gray-700">
-          {data.response.data.map((file: FileType, index: number) => (
+          {data.response.data.map((gateway: Gateway, index: number) => (
             <Table.Row key={index}>
               <Table.Cell className="text-base font-normal text-gray-500 dark:text-gray-400 px-4">
-                {file.name}
-              </Table.Cell>
-              <Table.Cell className="text-sm  font-normal text-gray-500 dark:text-gray-400 px-4">
-                {file?.user && (
-                  <>
-                    <p>{file.user?.name}</p>
-                    <p>{file.user?.email}</p>
-                  </>
-                )}
-                {!file.user && (
-                  <>
-                    <p>Guest</p>
-                  </>
-                )}
-              </Table.Cell>
-              <Table.Cell className="text-sm  font-normal text-gray-500 dark:text-gray-400 px-4">
-                <p>{file.internalCid}</p>
-                <p>{file.cid}</p>
+                {gateway.gateway}
               </Table.Cell>
               <Table.Cell className="text-base font-normal text-gray-500 dark:text-gray-400 px-4">
-                {convertSize(file.size)}
+                {gateway.status || <>-</>}
               </Table.Cell>
               <Table.Cell className="text-base font-normal text-gray-500 dark:text-gray-400 px-4">
-                {file.mimeType}
+                {gateway.latency || <>-</>}
+              </Table.Cell>
+              <Table.Cell className="text-base font-normal text-gray-500 dark:text-gray-400 px-4">
+                {gateway.isEnabled && (
+                  <FaRegPlayCircle color="green" className="h-7 w-7" />
+                )}
+
+                {!gateway.isEnabled && (
+                  <FaRegStopCircle color="red" className="h-7 w-7" />
+                )}
+              </Table.Cell>
+              <Table.Cell className="text-base font-normal text-gray-500 dark:text-gray-400 px-4">
+                {gateway.updatedAt}
               </Table.Cell>
               <Table.Cell className="text-base font-normal text-gray-500 px-4">
                 <div className="flex flex-wrap gap-2">
-                  <Link
-                    href={`/stream/${file.internalCid}`}
-                    target="_blank"
-                    title="Preview"
-                    className="group flex items-center justify-center px-1 py-1 text-center font-medium relative"
-                  >
-                    <span className="flex items-center transition-all duration-200 rounded-md text-xs px-2 py-1">
-                      <FaFileAlt className="h-5 w-5 text-gray-500 dark:text-white" />
-                    </span>
-                  </Link>
-                  <ShareFile
-                    gateways={file?.gateways}
-                    streamPathUrl={`stream/${file.internalCid}`}
-                  />
                   <Button
-                    onClick={() => handleDeleteButton(file)}
+                    onClick={() => {
+                      setIsModalOpen(true);
+                      setGatewayEdit(gateway);
+                    }}
+                    className="focus:outline-none"
+                  >
+                    <FaEdit className="h-5 w-5 text-gray-500 dark:text-white" />
+                  </Button>
+                  <Button
+                    onClick={() => handleDeleteButton(gateway)}
                     title="Delete"
                     size="xs"
                     className="focus:outline-none"
@@ -141,8 +133,6 @@ const FileList: FC = function () {
           ))}
         </Table.Body>
       </Table>
-
-      {/* pagination */}
       <div className="sticky bottom-0 right-0 items-center w-full p-4 bg-white border-t border-gray-200 dark:bg-dark-light dark:border-gray-700">
         <div className="flex overflow-x-auto sm:justify-center">
           <Pagination
@@ -160,20 +150,26 @@ const FileList: FC = function () {
           />
         </div>
       </div>
+      {/* {openEditModal && (
+        <GatewayEditModal gatewayData={editGatewayData} />
+      )} */}
+      <GatewayEditModal />
 
-      {/* Delete confirmation */}
+      {/* modal */}
       <Modal show={openModal} onClose={() => setOpenModal(false)}>
         <Modal.Header>
-          The following file will be deleted, are you sure ?
+          The following gateway will be deleted, are you sure ?
         </Modal.Header>
         <Modal.Body>
           <div className="space-y-6">
             <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-              CID: {deleteFile.cid}
+              ID: {deleteGateway?.id}
               <br />
-              Internal CID: {deleteFile.internalCid}
+              Gateway: {deleteGateway?.gateway}
               <br />
-              Name: {deleteFile.name}
+              Status: {deleteGateway?.status}
+              <br />
+              Latency: {deleteGateway?.latency}
             </p>
           </div>
         </Modal.Body>
@@ -190,14 +186,15 @@ const FileList: FC = function () {
       {/* Notification */}
       {openToast && (
         <Notification
-          toastMessage={toastMessage}
+          toastMessage="Gateway deleted successfully."
           onDismiss={() => {
             setOpenToast(false);
           }}
         />
       )}
+      {/* </GatewayEditProvider> */}
     </>
   );
 };
 
-export default FileList;
+export default GatewayList;

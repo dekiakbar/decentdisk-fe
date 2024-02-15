@@ -7,6 +7,7 @@ export type File = {
   internalCid: string;
   name: string;
   size: number;
+  gateways: string[];
   mimeType: string;
   createdAt: string;
   updatedAt: string;
