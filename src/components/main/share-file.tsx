@@ -88,7 +88,7 @@ const ShareFile: FC<ShareFileUrlProps> = function ({
         }}
       >
         <Modal.Header className="m-4">
-          <h2 className="text-2xl">Share The File</h2>
+          Share The File
         </Modal.Header>
         <Modal.Body>
           <div className="p-2">
