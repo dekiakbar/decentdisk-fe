@@ -1,6 +1,6 @@
 import { Button, Label, Modal, TextInput, ToggleSwitch } from "flowbite-react";
 import { FC, useState } from "react";
-import Notification from "../main/notification";
+import Notification from "../../main/notification";
 import { mutate } from "swr";
 
 const GatewayAdd: FC = function () {

@@ -3,8 +3,9 @@ import { Flowbite } from "flowbite-react";
 import customTheme from "@/components/flowbite-theme";
 import Layout from "@/components/admin/layout";
 import PageTitle from "@/components/main/page-title";
-import GatewayList from "@/components/admin/gateway-list";
-import GatewayAdd from "@/components/admin/gateway-add";
+import GatewayList from "@/components/admin/gateway/gateway-list";
+import GatewayAdd from "@/components/admin/gateway/gateway-add";
+import GatewayEditProvider from "@/components/admin/gateway/gateway-edit-provider";
 
 export default function List() {
   return (
@@ -14,7 +15,9 @@ export default function List() {
         <Layout>
           <div className="px-4 pt-6">
             <GatewayAdd />
-            <GatewayList />
+            <GatewayEditProvider>
+              <GatewayList />
+            </GatewayEditProvider>
           </div>
         </Layout>
       </Flowbite>

@@ -1,12 +1,19 @@
 import { objectToQueryParam } from "@/utils/builder";
 import { Button, Modal, Pagination, Table } from "flowbite-react";
-import { FC, useState } from "react";
+import { FC, useContext, useState } from "react";
 import useSWR from "swr";
-import Notification from "../main/notification";
-import TableSkeleton from "../main/skeleton/table-skeleton";
-import AlertError from "../main/alert/alert-error";
-import { FaRegPlayCircle, FaRegStopCircle, FaTrashAlt } from "react-icons/fa";
+import Notification from "../../main/notification";
+import TableSkeleton from "../../main/skeleton/table-skeleton";
+import AlertError from "../../main/alert/alert-error";
+import {
+  FaEdit,
+  FaRegPlayCircle,
+  FaRegStopCircle,
+  FaTrashAlt,
+} from "react-icons/fa";
 import { Gateway } from "@/interfaces/gateway";
+import { GatewayEditContext } from "./gateway-edit-provider";
+import GatewayEditModal from "./gateway-edit";
 export const GatewayList: FC = function () {
   const fetcher = async (...args: Parameters<typeof fetch>) => {
     const res = await fetch(...args);
@@ -47,12 +54,14 @@ export const GatewayList: FC = function () {
   const [openModal, setOpenModal] = useState(false);
   const [deleteGateway, setDeleteGateway] = useState(Object);
   const [openToast, setOpenToast] = useState(false);
+  const { setIsModalOpen, setGatewayEdit } = useContext(GatewayEditContext);
 
   if (error) return <AlertError />;
   if (isLoading) return <TableSkeleton />;
 
   return (
     <>
+      {/* <GatewayEditProvider> */}
       {/* gateway grid */}
       <Table>
         <Table.Head className="bg-gray-100 dark:bg-gray-700">
@@ -102,6 +111,15 @@ export const GatewayList: FC = function () {
               <Table.Cell className="text-base font-normal text-gray-500 px-4">
                 <div className="flex flex-wrap gap-2">
                   <Button
+                    onClick={() => {
+                      setIsModalOpen(true);
+                      setGatewayEdit(gateway);
+                    }}
+                    className="focus:outline-none"
+                  >
+                    <FaEdit className="h-5 w-5 text-gray-500 dark:text-white" />
+                  </Button>
+                  <Button
                     onClick={() => handleDeleteButton(gateway)}
                     title="Delete"
                     size="xs"
@@ -132,6 +150,10 @@ export const GatewayList: FC = function () {
           />
         </div>
       </div>
+      {/* {openEditModal && (
+        <GatewayEditModal gatewayData={editGatewayData} />
+      )} */}
+      <GatewayEditModal />
 
       {/* modal */}
       <Modal show={openModal} onClose={() => setOpenModal(false)}>
@@ -170,6 +192,7 @@ export const GatewayList: FC = function () {
           }}
         />
       )}
+      {/* </GatewayEditProvider> */}
     </>
   );
 };

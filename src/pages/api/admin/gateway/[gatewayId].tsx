@@ -8,6 +8,7 @@ import {
   MethodNotAllowedException,
   unAuthorizedException,
 } from "@/utils/http-api-exception";
+import httpProxyMiddleware from "next-http-proxy-middleware";
 
 export default async function gatewayId(
   req: NextApiRequest,
@@ -27,6 +28,17 @@ export default async function gatewayId(
   const url = `/admin/gateway-checker/${gatewayId}`;
 
   switch (requestMethod) {
+    case "PATCH":
+      req.headers.authorization = "Bearer " + session?.access_token;
+      return httpProxyMiddleware(req, res, {
+        target: process.env.NEXT_PUBLIC_API_URL,
+        pathRewrite: [
+          {
+            patternStr: `api/admin/gateway/${gatewayId}`,
+            replaceStr: `admin/gateway-checker/${gatewayId}`,
+          },
+        ],
+      });
     case "DELETE":
       const response = await fetchAPI(url, {
         method: "DELETE",
