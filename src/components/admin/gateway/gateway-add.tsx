@@ -2,6 +2,7 @@ import { Button, Label, Modal, TextInput, ToggleSwitch } from "flowbite-react";
 import { FC, useState } from "react";
 import Notification from "../../main/notification";
 import { mutate } from "swr";
+import { NotificationType } from "@/enum/notification";
 
 const GatewayAdd: FC = function () {
   const [isRequesting, setIsRequesting] = useState(false);
@@ -10,6 +11,9 @@ const GatewayAdd: FC = function () {
   const [openModal, setOpenModal] = useState(false);
   const [gateway, setGateway] = useState("");
   const [enable, setEnable] = useState(true);
+  const [toastType, setToastType] = useState<NotificationType>(
+    NotificationType.SUCCESS
+  );
 
   function onCloseModal() {
     setOpenModal(false);
@@ -52,11 +56,15 @@ const GatewayAdd: FC = function () {
           );
 
           setToastMessage("Gateway added successfully.");
+          setToastType(NotificationType.SUCCESS);
           setOpenToast(true);
           setInputKey(Date.now());
           setOpenModal(false);
         } else {
-          // TODO: Handle Error
+          const response = await result.json();
+          setToastMessage(response.message);
+          setToastType(NotificationType.ERROR);
+          setOpenToast(true);
           setIsRequesting(false);
         }
       } catch (error) {
@@ -141,6 +149,7 @@ const GatewayAdd: FC = function () {
         <Notification
           toastMessage={toastMessage}
           onDismiss={() => setOpenToast(false)}
+          type={toastType}
         />
       )}
     </>
