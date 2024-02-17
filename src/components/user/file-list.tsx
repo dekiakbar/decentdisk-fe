@@ -96,7 +96,7 @@ const FileList: FC = function () {
                 {file.mimeType}
               </Table.Cell>
               <Table.Cell className="text-base font-normal text-gray-500 px-4">
-                <div className="flex flex-wrap gap-2">
+                <div className="flex gap-2">
                   <Link
                     href={`/stream/${file.internalCid}`}
                     target="_blank"

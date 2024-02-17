@@ -109,7 +109,7 @@ export const GatewayList: FC = function () {
                 {gateway.updatedAt}
               </Table.Cell>
               <Table.Cell className="text-base font-normal text-gray-500 px-4">
-                <div className="flex flex-wrap gap-2">
+                <div className="flex gap-2">
                   <Button
                     onClick={() => {
                       setIsModalOpen(true);

@@ -103,7 +103,7 @@ export const UserList: FC = function () {
                 {user.provider}
               </Table.Cell>
               <Table.Cell className="text-base font-normal text-gray-500 px-4">
-                <div className="flex flex-wrap gap-2">
+                <div className="flex gap-2">
                   <Button
                     onClick={() => handleDeleteButton(user)}
                     title="Delete"
