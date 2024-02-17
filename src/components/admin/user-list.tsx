@@ -8,6 +8,7 @@ import Notification from "../main/notification";
 import TableSkeleton from "../main/skeleton/table-skeleton";
 import AlertError from "../main/alert/alert-error";
 import { FaTrashAlt } from "react-icons/fa";
+import { NotificationType } from "@/enum/notification";
 
 export const UserList: FC = function () {
   const fetcher = async (...args: Parameters<typeof fetch>) => {
@@ -23,6 +24,10 @@ export const UserList: FC = function () {
     "/api/admin/user/list" + objectToQueryParam({ page: currentPage }),
     fetcher
   );
+  const [toastType, setToastType] = useState<NotificationType>(
+    NotificationType.SUCCESS
+  );
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const onPageChange = (page: number) => {
     setCurrentPage(page);
@@ -40,9 +45,17 @@ export const UserList: FC = function () {
     );
 
     if (response.status == 200) {
+      setToastMessage("User deleted successfully.");
       setOpenToast(true);
       mutate();
     }
+
+    if (response.status != 200) {
+      setToastMessage(response.response.message);
+      setToastType(NotificationType.ERROR);
+      setOpenToast(true);
+    }
+
     setOpenModal(false);
   }
 
@@ -165,10 +178,11 @@ export const UserList: FC = function () {
       {/* Notification */}
       {openToast && (
         <Notification
-          toastMessage="User deleted successfully."
+          toastMessage={toastMessage}
           onDismiss={() => {
             setOpenToast(false);
           }}
+          type={toastType}
         />
       )}
     </>

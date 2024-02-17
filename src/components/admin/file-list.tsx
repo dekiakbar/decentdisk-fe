@@ -10,6 +10,7 @@ import TableSkeleton from "../main/skeleton/table-skeleton";
 import AlertError from "../main/alert/alert-error";
 import ShareFile from "../main/share-file";
 import { FaFileAlt, FaTrashAlt } from "react-icons/fa";
+import { NotificationType } from "@/enum/notification";
 
 const FileList: FC = function () {
   const [currentPage, setCurrentPage] = useState(1);
@@ -17,6 +18,9 @@ const FileList: FC = function () {
   const [deleteFile, setDeleteFile] = useState(Object);
   const [openToast, setOpenToast] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [toastType, setToastType] = useState<NotificationType>(
+    NotificationType.SUCCESS
+  );
 
   const fetcher = async (...args: Parameters<typeof fetch>) => {
     const res = await fetch(...args);
@@ -49,8 +53,15 @@ const FileList: FC = function () {
 
     if (response.status == 200) {
       setToastMessage("File deleted successfully.");
+      setToastType(NotificationType.SUCCESS);
       setOpenToast(true);
       mutate();
+    }
+
+    if (response.status != 200) {
+      setToastMessage(response.response.message);
+      setToastType(NotificationType.ERROR);
+      setOpenToast(true);
     }
     setOpenModal(false);
   }
@@ -194,6 +205,7 @@ const FileList: FC = function () {
           onDismiss={() => {
             setOpenToast(false);
           }}
+          type={toastType}
         />
       )}
     </>

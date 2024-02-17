@@ -4,6 +4,7 @@ import Notification from "../../main/notification";
 import { mutate } from "swr";
 import { Gateway } from "@/interfaces/gateway";
 import { GatewayEditContext } from "./gateway-edit-provider";
+import { NotificationType } from "@/enum/notification";
 
 export interface GatewayEditModalProps {
   gatewayData: Gateway | null;
@@ -16,9 +17,9 @@ const GatewayEditModal: FC = function () {
   const [isRequesting, setIsRequesting] = useState(false);
   const [openToast, setOpenToast] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
-
-  // const [openModal, setOpenModal] = useState(false);
-
+  const [toastType, setToastType] = useState<NotificationType>(
+    NotificationType.SUCCESS
+  );
   const [gateway, setGateway] = useState(gatewayEdit?.gateway || "");
   const [enable, setEnable] = useState(gatewayEdit?.isEnabled || false);
 
@@ -70,11 +71,15 @@ const GatewayEditModal: FC = function () {
           );
 
           setToastMessage("Gateway added successfully.");
+          setToastType(NotificationType.SUCCESS);
           setOpenToast(true);
           setInputKey(Date.now());
           setIsModalOpen(false);
         } else {
-          // TODO: Handle Error
+          const response = await result.json();
+          setToastMessage(response.message);
+          setToastType(NotificationType.ERROR);
+          setOpenToast(true);
           setIsRequesting(false);
         }
         setIsRequesting(false);
@@ -147,6 +152,7 @@ const GatewayEditModal: FC = function () {
         <Notification
           toastMessage={toastMessage}
           onDismiss={() => setOpenToast(false)}
+          type={toastType}
         />
       )}
     </>

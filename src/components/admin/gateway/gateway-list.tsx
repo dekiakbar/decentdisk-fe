@@ -14,7 +14,14 @@ import {
 import { Gateway } from "@/interfaces/gateway";
 import { GatewayEditContext } from "./gateway-edit-provider";
 import GatewayEditModal from "./gateway-edit";
+import { NotificationType } from "@/enum/notification";
+
 export const GatewayList: FC = function () {
+  const [toastType, setToastType] = useState<NotificationType>(
+    NotificationType.SUCCESS
+  );
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
   const fetcher = async (...args: Parameters<typeof fetch>) => {
     const res = await fetch(...args);
     if (!res.ok) {
@@ -45,9 +52,18 @@ export const GatewayList: FC = function () {
     );
 
     if (response.status == 200) {
+      setToastMessage("Gateway deleted successfully.");
+      setToastType(NotificationType.SUCCESS);
       setOpenToast(true);
       mutate();
     }
+
+    if (response.status != 200) {
+      setToastMessage(response.response.message);
+      setToastType(NotificationType.ERROR);
+      setOpenToast(true);
+    }
+
     setOpenModal(false);
   }
 
@@ -186,10 +202,11 @@ export const GatewayList: FC = function () {
       {/* Notification */}
       {openToast && (
         <Notification
-          toastMessage="Gateway deleted successfully."
+          toastMessage={toastMessage}
           onDismiss={() => {
             setOpenToast(false);
           }}
+          type={toastType}
         />
       )}
       {/* </GatewayEditProvider> */}
